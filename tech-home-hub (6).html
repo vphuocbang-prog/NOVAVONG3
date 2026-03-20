@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Home Hub – Đà Nẵng Code Your Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+:root{
+  --pr:#0055A4;--pd:#003d7a;--sec:#FF6B00;--ac:#00C2A8;--dk:#0A1628;
+  --lt:#F4F7FC;--wh:#fff;--gr:#6B7A99;--bd:#DDE3F0;
+  --ok:#22c55e;--gd:#f59e0b;--er:#ef4444;--pu:#8B5CF6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--wh);color:var(--dk);font-size:14px;overflow-x:hidden;}
+a{text-decoration:none;}
+button{cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;}
+.lx{font-family:'Lexend',sans-serif;}
+
+/* ── TICKER ── */
+.ticker{background:linear-gradient(90deg,#060f1e,#0d1f3c,#060f1e);padding:9px 0;overflow:hidden;position:relative;}
+.ticker::before,.ticker::after{content:'';position:absolute;top:0;width:80px;height:100%;z-index:2;pointer-events:none;}
+.ticker::before{left:0;background:linear-gradient(90deg,#060f1e,transparent);}
+.ticker::after{right:0;background:linear-gradient(-90deg,#060f1e,transparent);}
+.ticker-track{display:flex;animation:tick 52s linear infinite;white-space:nowrap;width:max-content;}
+.ticker-track:hover{animation-play-state:paused;}
+.ti{color:rgba(255,255,255,.7);font-size:12.5px;padding:0 22px;}
+.ti .h{color:var(--ac);font-weight:700;}
+.ti .sep{color:var(--sec);margin:0 6px;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--pr);padding:5px 0;}
+.topbar .c{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;}
+.tl a{color:rgba(255,255,255,.8);font-size:12px;font-weight:500;margin-right:18px;}
+.tl a:hover{color:#fff;}
+.tr{display:flex;gap:14px;align-items:center;}
+.tr a{color:rgba(255,255,255,.8);font-size:12px;font-weight:600;}
+.tr a:hover{color:#fff;}
+
+/* ── HEADER ── */
+.hdr{background:var(--wh);border-bottom:2px solid var(--bd);padding:13px 0;position:sticky;top:0;z-index:300;box-shadow:0 2px 16px rgba(0,85,164,.07);}
+.hdr .c{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:20px;}
+.logo{display:flex;align-items:center;gap:11px;flex-shrink:0;}
+.logo-b{width:52px;height:52px;background:linear-gradient(135deg,var(--pr),#002f60);border-radius:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:900;font-family:'Lexend',sans-serif;line-height:1.15;}
+.logo-b span{font-size:7.5px;font-weight:400;opacity:.7;margin-top:1px;}
+.logo-tx .s1{font-size:10.5px;color:var(--gr);font-weight:400;text-transform:uppercase;letter-spacing:.5px;display:block;}
+.logo-tx .s2{font-family:'Lexend',sans-serif;font-size:16.5px;font-weight:800;color:var(--pr);line-height:1.1;}
+.logo-tx .s2 em{color:var(--sec);font-style:normal;}
+.hrmm{background:linear-gradient(135deg,var(--gd),#c97d06);color:#fff;font-family:'Lexend',sans-serif;font-size:9.5px;font-weight:900;padding:5px 10px;border-radius:5px;letter-spacing:.4px;flex-shrink:0;box-shadow:0 3px 10px rgba(245,158,11,.35);white-space:nowrap;}
+.hrmm small{display:block;font-weight:400;font-size:8.5px;opacity:.85;margin-top:1px;}
+.srch{flex:1;max-width:270px;margin-left:auto;}
+.srch input{width:100%;padding:9px 15px;border:1.5px solid var(--bd);border-radius:8px;font-size:13px;font-family:'Be Vietnam Pro',sans-serif;outline:none;color:var(--dk);}
+.srch input:focus{border-color:var(--pr);}
+.hbtns{display:flex;gap:8px;flex-shrink:0;}
+.btn-ln{background:var(--wh);color:var(--pr);border:2px solid var(--pr);padding:8px 17px;border-radius:8px;font-size:13px;font-weight:700;transition:all .2s;}
+.btn-ln:hover{background:var(--pr);color:#fff;}
+.btn-rg{background:var(--sec);color:#fff;border:none;padding:8px 17px;border-radius:8px;font-size:13px;font-weight:700;}
+.btn-rg:hover{background:#d95c00;}
+
+/* ── NAVBAR ── */
+.nav{background:var(--pr);}
+.nav .c{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.nav .c::-webkit-scrollbar{display:none;}
+.ni{color:rgba(255,255,255,.85);font-size:12.5px;font-weight:600;padding:13px 15px;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;flex-shrink:0;cursor:pointer;}
+.ni:hover,.ni.on{color:#fff;background:rgba(255,255,255,.1);border-bottom-color:var(--sec);}
+
+/* ── HERO ── */
+.hero{position:relative;height:460px;overflow:hidden;}
+.hs{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;display:flex;align-items:center;}
+.hs.on{opacity:1;}
+.hs1{background:linear-gradient(135deg,#0055A4,#002f60 45%,#001640);}
+.hs2{background:linear-gradient(135deg,#00b89c,#0055A4);}
+.hs3{background:linear-gradient(135deg,#0A1628,#0055A4);}
+.si{max-width:1280px;margin:0 auto;padding:0 24px;width:100%;color:#fff;}
+.htag{display:inline-block;background:var(--sec);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:14px;letter-spacing:.7px;text-transform:uppercase;}
+.h1{font-family:'Lexend',sans-serif;font-size:40px;font-weight:900;line-height:1.13;margin-bottom:7px;}
+.hsub{font-size:19px;font-weight:700;color:var(--ac);margin-bottom:14px;}
+.hp{font-size:13.5px;opacity:.85;line-height:1.7;max-width:480px;}
+.hcta{display:flex;gap:11px;margin-top:22px;}
+.btnp{background:var(--sec);color:#fff;border:none;padding:11px 26px;border-radius:8px;font-size:13.5px;font-weight:700;transition:all .2s;}
+.btnp:hover{background:#d95c00;transform:translateY(-1px);}
+.btno{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.45);padding:11px 26px;border-radius:8px;font-size:13.5px;font-weight:600;}
+.btno:hover{border-color:#fff;background:rgba(255,255,255,.1);}
+.hbig{position:absolute;right:72px;top:50%;transform:translateY(-50%);text-align:center;color:#fff;}
+.hbig .yr{font-family:'Lexend',sans-serif;font-size:100px;font-weight:900;line-height:.9;}
+.hbig .yr em{color:var(--sec);font-style:normal;}
+.hbig .lbl{font-size:16px;font-weight:800;background:var(--sec);color:#fff;padding:7px 18px;border-radius:5px;margin-top:10px;display:inline-block;}
+.hdots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:10;}
+.dd{width:7px;height:7px;background:rgba(255,255,255,.35);border-radius:50%;cursor:pointer;transition:all .3s;}
+.dd.on{background:#fff;width:22px;border-radius:4px;}
+
+/* ── AUDIENCE BAR ── */
+.abar{background:var(--dk);}
+.abar .c{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.abar .c::-webkit-scrollbar{display:none;}
+.ai{color:rgba(255,255,255,.65);font-size:12.5px;font-weight:600;padding:13px 18px;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;flex-shrink:0;cursor:pointer;}
+.ai:hover,.ai.on{color:#fff;background:rgba(255,255,255,.05);border-bottom-color:var(--ac);}
+.hotline{margin-left:auto;background:var(--ac);color:var(--dk);padding:7px 16px;border-radius:6px;font-size:12px;font-weight:700;flex-shrink:0;cursor:pointer;}
+
+/* ── MAIN GRID ── */
+.main{max-width:1280px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:1fr 1fr 290px;gap:26px;}
+.st{display:flex;align-items:center;margin-bottom:16px;padding-bottom:9px;border-bottom:2px solid var(--bd);}
+.st h2{font-family:'Lexend',sans-serif;font-size:15px;font-weight:800;color:var(--pr);text-transform:uppercase;letter-spacing:.5px;}
+.st a{margin-left:auto;font-size:12px;color:var(--sec);font-weight:600;cursor:pointer;}
+.nfeat{position:relative;border-radius:10px;overflow:hidden;margin-bottom:13px;aspect-ratio:16/9;cursor:pointer;}
+.nph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:'Lexend',sans-serif;font-size:17px;font-weight:700;text-align:center;padding:18px;}
+.nov{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.75));padding:22px 14px 12px;color:#fff;}
+.nov h3{font-size:13.5px;font-weight:700;line-height:1.4;}
+.nov .dt{font-size:11px;opacity:.7;margin-top:3px;}
+.nlist{display:flex;flex-direction:column;gap:11px;}
+.nit{display:flex;gap:11px;padding-bottom:11px;border-bottom:1px solid var(--bd);cursor:pointer;}
+.nit:hover .nt{color:var(--pr);}
+.nimg{width:76px;height:52px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700;text-align:center;padding:4px;}
+.nt{font-size:12.5px;font-weight:600;line-height:1.45;color:var(--dk);}
+.nd{font-size:11px;color:var(--gr);margin-top:3px;}
+
+/* ── HOT NEWS SECTION ── */
+.hot-sec{max-width:1280px;margin:0 auto;padding:0 24px 32px;}
+.hot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.hcard{background:var(--wh);border:1.5px solid var(--bd);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .28s;}
+.hcard:hover{border-color:var(--pr);box-shadow:0 6px 20px rgba(0,85,164,.1);transform:translateY(-3px);}
+.hcard-top{height:6px;}
+.hcard-bd{padding:14px;}
+.hcat{display:inline-block;font-size:10px;font-weight:700;padding:2px 9px;border-radius:10px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.3px;}
+.hcard h4{font-family:'Lexend',sans-serif;font-size:13px;font-weight:700;line-height:1.4;color:var(--dk);margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.hcard p{font-size:11.5px;color:var(--gr);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.hcard-ft{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid var(--bd);}
+.hcard-ft .src{font-size:10.5px;color:var(--gr);font-weight:600;}
+.hcard-ft .date{font-size:10px;color:var(--gr);}
+.hot-badge{background:linear-gradient(135deg,var(--er),#c71e1e);color:#fff;font-size:9px;font-weight:800;padding:2px 7px;border-radius:3px;letter-spacing:.5px;animation:hotPulse 2s ease-in-out infinite;}
+@keyframes hotPulse{0%,100%{opacity:1}50%{opacity:.7}}
+
+/* ── SIDEBAR ── */
+.sb{display:flex;flex-direction:column;gap:18px;}
+.sc{border:1.5px solid var(--bd);border-radius:10px;overflow:hidden;}
+.sc-h{background:var(--pr);color:#fff;padding:9px 13px;font-size:12.5px;font-weight:700;font-family:'Lexend',sans-serif;text-transform:uppercase;}
+.sc-b{padding:13px;}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.sbox{background:var(--lt);border-radius:8px;padding:11px;text-align:center;}
+.sn{font-family:'Lexend',sans-serif;font-size:21px;font-weight:800;color:var(--pr);line-height:1;}
+.sn em{color:var(--sec);font-style:normal;}
+.sl{font-size:10.5px;color:var(--gr);margin-top:3px;line-height:1.3;}
+.ql{display:flex;flex-direction:column;gap:1px;}
+.qli{padding:8px 9px;border-radius:6px;font-size:12px;font-weight:500;color:var(--dk);display:flex;align-items:center;gap:7px;transition:all .2s;border-left:3px solid transparent;cursor:pointer;}
+.qli:hover{background:var(--lt);border-left-color:var(--pr);color:var(--pr);padding-left:13px;}
+.qdot{width:5px;height:5px;background:var(--sec);border-radius:50%;flex-shrink:0;}
+
+/* ── FEATURES ── */
+.feat-sec{background:var(--lt);padding:36px 0;border-top:2px solid var(--bd);}
+.feat-sec .c{max-width:1280px;margin:0 auto;padding:0 24px;}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.fc{background:#fff;border-radius:12px;padding:22px;border:1.5px solid var(--bd);transition:all .3s;cursor:pointer;}
+.fc:hover{border-color:var(--pr);box-shadow:0 8px 24px rgba(0,85,164,.1);transform:translateY(-3px);}
+.fc-n{font-family:'Lexend',sans-serif;font-size:34px;font-weight:900;color:var(--bd);line-height:1;margin-bottom:10px;}
+.fc-t{font-family:'Lexend',sans-serif;font-size:14.5px;font-weight:700;color:var(--pr);margin-bottom:7px;}
+.fc p{font-size:12.5px;color:var(--gr);line-height:1.6;}
+.ftag{display:inline-block;background:rgba(0,194,168,.1);color:#00877a;font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:20px;margin-top:10px;}
+
+/* ── COMPANIES ── */
+.co-sec{padding:32px 0;background:#fff;border-top:2px solid var(--bd);overflow:hidden;}
+.co-sec .c{max-width:1280px;margin:0 auto;padding:0 24px;}
+.co-wrap{overflow:hidden;position:relative;margin-top:14px;}
+.co-wrap::before,.co-wrap::after{content:'';position:absolute;top:0;width:90px;height:100%;z-index:2;}
+.co-wrap::before{left:0;background:linear-gradient(90deg,#fff,transparent);}
+.co-wrap::after{right:0;background:linear-gradient(-90deg,#fff,transparent);}
+.co-track{display:flex;gap:14px;animation:coScroll 38s linear infinite;width:max-content;}
+.co-track:hover{animation-play-state:paused;}
+@keyframes coScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.cocard{background:var(--lt);border:1.5px solid var(--bd);border-radius:11px;padding:14px 20px;display:flex;flex-direction:column;align-items:center;gap:7px;width:150px;flex-shrink:0;transition:all .3s;cursor:pointer;}
+.cocard:hover{border-color:var(--pr);transform:translateY(-2px);}
+.colg{width:44px;height:44px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Lexend',sans-serif;font-size:12px;font-weight:900;color:#fff;}
+.conm{font-size:11.5px;font-weight:700;color:var(--dk);text-align:center;}
+.cosn{font-size:10px;color:var(--gr);}
+
+/* ── FOOTER ── */
+footer{background:var(--dk);color:rgba(255,255,255,.65);padding:30px 0 18px;}
+footer .c{max-width:1280px;margin:0 auto;padding:0 24px;}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px;margin-bottom:20px;}
+.fl{display:flex;align-items:center;gap:9px;margin-bottom:11px;}
+.fl-b{width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Lexend',sans-serif;font-size:11.5px;font-weight:800;}
+.fl-t{color:#fff;font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:700;}
+.fl-t em{color:var(--sec);font-style:normal;}
+.fd{font-size:12px;line-height:1.65;margin-bottom:12px;}
+.fa{font-size:11.5px;line-height:1.7;}
+.fa strong{color:#fff;}
+.fc2 h4{color:#fff;font-size:12.5px;font-weight:700;margin-bottom:11px;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.1);}
+.fc2 a{display:block;color:rgba(255,255,255,.6);font-size:12px;padding:3px 0;cursor:pointer;}
+.fc2 a:hover{color:#fff;}
+.fb{border-top:1px solid rgba(255,255,255,.1);padding-top:14px;display:flex;justify-content:space-between;font-size:11.5px;flex-wrap:wrap;gap:7px;}
+.hrmm-ft{background:linear-gradient(135deg,rgba(245,158,11,.18),rgba(217,119,6,.08));border:1px solid rgba(245,158,11,.3);border-radius:7px;padding:8px 12px;margin-bottom:14px;}
+.hrmm-ft .t{font-family:'Lexend',sans-serif;font-size:12.5px;font-weight:800;color:var(--gd);}
+.hrmm-ft .s{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;}
+
+/* ── MODALS ── */
+.ov{display:none;position:fixed;inset:0;background:rgba(10,22,40,.78);z-index:1000;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(5px);}
+.ov.on{display:flex;}
+.mb{background:#fff;border-radius:15px;width:100%;max-width:680px;max-height:92vh;overflow-y:auto;position:relative;animation:mIn .28s ease;}
+@keyframes mIn{from{transform:translateY(28px);opacity:0}to{transform:none;opacity:1}}
+.mh{background:var(--pr);color:#fff;padding:18px 22px;border-radius:15px 15px 0 0;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:5;}
+.mh h2{font-family:'Lexend',sans-serif;font-size:17px;font-weight:700;}
+.mx{background:rgba(255,255,255,.2);border:none;color:#fff;width:30px;height:30px;border-radius:7px;font-size:19px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.mx:hover{background:rgba(255,255,255,.35);}
+.mbd{padding:22px;}
+.ssec{font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:700;color:var(--dk);margin:14px 0 7px;}
+
+/* ── FORM ── */
+.fg2{display:flex;flex-direction:column;gap:5px;}
+.fg2 label{font-size:11.5px;font-weight:700;color:var(--gr);text-transform:uppercase;letter-spacing:.35px;}
+.fg2 input,.fg2 select,.fg2 textarea{padding:9px 11px;border:1.5px solid var(--bd);border-radius:7px;font-size:13.5px;font-family:'Be Vietnam Pro',sans-serif;color:var(--dk);outline:none;background:#fff;}
+.fg2 input:focus,.fg2 select:focus,.fg2 textarea:focus{border-color:var(--pr);}
+.cta-f{width:100%;background:var(--sec);color:#fff;border:none;padding:12px;border-radius:9px;font-size:14.5px;font-family:'Lexend',sans-serif;font-weight:700;cursor:pointer;}
+.cta-f:hover{background:#d95c00;}
+
+/* ── AUTH ── */
+.atabs{display:flex;border-bottom:2px solid var(--bd);margin-bottom:18px;}
+.atab{padding:9px 18px;font-size:13.5px;font-weight:600;color:var(--gr);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+.atab.on{color:var(--pr);border-bottom-color:var(--pr);}
+.consent{background:rgba(0,85,164,.04);border:1.5px solid rgba(0,85,164,.14);border-radius:7px;padding:12px;font-size:11.5px;color:var(--gr);line-height:1.6;}
+.consent strong{color:var(--dk);}
+.cck{display:flex;align-items:flex-start;gap:9px;margin-top:9px;cursor:pointer;}
+.cck input{margin-top:2px;accent-color:var(--pr);}
+.cck span{font-size:12px;color:var(--dk);}
+.adiv{text-align:center;color:var(--gr);font-size:12px;position:relative;margin:4px 0;}
+.adiv::before,.adiv::after{content:'';position:absolute;top:50%;width:42%;height:1px;background:var(--bd);}
+.adiv::before{left:0;}.adiv::after{right:0;}
+
+/* ── CALCULATOR ── */
+.cres{display:none;}
+.cres.on{display:block;}
+.cmp{display:grid;grid-template-columns:1fr auto 1fr;gap:11px;align-items:center;margin-bottom:18px;}
+.cc{border-radius:11px;padding:15px;text-align:center;}
+.cc.cur{background:rgba(255,107,0,.07);border:2px solid rgba(255,107,0,.28);}
+.cc.dn{background:rgba(0,85,164,.07);border:2px solid rgba(0,85,164,.28);}
+.cc .cnm{font-size:11px;font-weight:700;color:var(--gr);text-transform:uppercase;margin-bottom:3px;}
+.cc .csal{font-family:'Lexend',sans-serif;font-size:23px;font-weight:900;margin-bottom:2px;}
+.cc .cnet{font-size:11px;color:var(--gr);}
+.cc .cnet strong{color:var(--ok);}
+.carr{font-family:'Lexend',sans-serif;font-size:22px;font-weight:900;color:var(--bd);}
+.cbrk{display:flex;flex-direction:column;gap:7px;}
+.crow{display:flex;align-items:center;gap:9px;font-size:12.5px;}
+.crow .cat{width:95px;font-weight:500;color:var(--gr);flex-shrink:0;}
+.crow .bb{flex:1;height:9px;background:var(--bd);border-radius:5px;overflow:hidden;}
+.crow .bf{height:100%;border-radius:5px;transition:width 1s ease;}
+.crow .amt{width:110px;text-align:right;font-weight:700;font-size:11.5px;}
+.tcmp{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:14px 0;}
+.tbox{border-radius:9px;padding:13px;text-align:center;}
+.tbox.bad{background:rgba(239,68,68,.07);border:1.5px solid rgba(239,68,68,.22);}
+.tbox.good{background:rgba(34,197,94,.07);border:1.5px solid rgba(34,197,94,.22);}
+.tcit{font-size:11px;font-weight:700;color:var(--gr);text-transform:uppercase;margin-bottom:3px;}
+.ttm{font-family:'Lexend',sans-serif;font-size:21px;font-weight:900;}
+.tbox.bad .ttm{color:var(--er);}
+.tbox.good .ttm{color:var(--ok);}
+.tlb{font-size:11px;color:var(--gr);margin-top:2px;}
+.verd{border-radius:11px;padding:15px;background:linear-gradient(135deg,var(--pr),var(--pd));color:#fff;text-align:center;margin-top:14px;}
+.verd .vt{font-family:'Lexend',sans-serif;font-size:15px;font-weight:800;margin-bottom:5px;}
+.verd .vs{font-size:12.5px;opacity:.85;}
+
+/* ── MAP ── */
+.mapc{position:relative;background:#e6f2ff;border-radius:11px;overflow:hidden;height:330px;margin-bottom:14px;}
+.opop{display:none;position:absolute;background:#fff;border-radius:11px;padding:15px;box-shadow:0 8px 30px rgba(0,0,0,.14);width:220px;z-index:10;border-top:4px solid var(--pr);}
+.opop.on{display:block;}
+.opop h4{font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:700;color:var(--pr);margin-bottom:5px;}
+.opop .om{font-size:11.5px;color:var(--gr);margin-bottom:9px;line-height:1.5;white-space:pre-line;}
+.otags{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:9px;}
+.otag{background:rgba(0,85,164,.09);color:var(--pr);font-size:10px;font-weight:600;padding:2px 7px;border-radius:9px;}
+.opop .obt{width:100%;background:var(--pr);color:#fff;border:none;padding:7px;border-radius:6px;font-size:12px;font-family:'Be Vietnam Pro',sans-serif;font-weight:700;cursor:pointer;}
+.mleg{display:flex;flex-wrap:wrap;gap:9px;font-size:11.5px;color:var(--gr);}
+.ld{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:3px;}
+.opin{cursor:pointer;}
+
+/* ── REFERRAL ── */
+.refbox{background:linear-gradient(135deg,var(--pr),var(--pd));color:#fff;border-radius:11px;padding:15px;margin-bottom:18px;}
+.refl{display:flex;gap:7px;margin-top:7px;}
+.refl input{flex:1;padding:8px 11px;border-radius:6px;border:none;font-size:12px;font-family:'Be Vietnam Pro',sans-serif;color:var(--dk);outline:none;}
+.refl button{background:var(--sec);color:#fff;border:none;padding:8px 14px;border-radius:6px;font-size:12px;font-family:'Be Vietnam Pro',sans-serif;font-weight:700;cursor:pointer;}
+.lbt{width:100%;border-collapse:collapse;}
+.lbt th{background:var(--lt);padding:9px 11px;text-align:left;font-size:11px;font-weight:700;color:var(--gr);text-transform:uppercase;}
+.lbt td{padding:11px;border-bottom:1px solid var(--bd);font-size:12.5px;}
+.lbt tr:last-child td{border-bottom:none;}
+.rb{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Lexend',sans-serif;font-weight:800;font-size:12.5px;}
+.r1{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;}
+.r2{background:linear-gradient(135deg,#94a3b8,#64748b);color:#fff;}
+.r3{background:linear-gradient(135deg,#cd7c2f,#a85d1e);color:#fff;}
+.rx{background:var(--lt);color:var(--gr);}
+.lvb{display:inline-block;padding:2px 9px;border-radius:9px;font-size:10.5px;font-weight:700;}
+.lg{background:rgba(245,158,11,.13);color:#b45309;}
+.ls{background:rgba(148,163,184,.13);color:#64748b;}
+.lb2{background:rgba(205,124,47,.13);color:#a85d1e;}
+.plist{display:flex;flex-direction:column;gap:7px;margin-top:14px;}
+.pit{display:flex;align-items:center;gap:11px;padding:9px 12px;background:var(--lt);border-radius:7px;font-size:12.5px;}
+.prk{font-family:'Lexend',sans-serif;font-weight:800;color:var(--pr);width:55px;}
+
+/* ── TOUR ── */
+.tform{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+/* ════════════════════════════════════
+   CV SCANNER — FULL REDESIGN
+════════════════════════════════════ */
+.cvsteps{display:flex;align-items:center;padding:15px 22px;border-bottom:1px solid var(--bd);background:#f8fafc;}
+.cvstp{display:flex;align-items:center;gap:7px;flex:1;}
+.cvstpn{width:27px;height:27px;border-radius:50%;border:2px solid rgba(0,85,164,.2);background:rgba(0,85,164,.07);color:var(--gr);font-family:'Lexend',sans-serif;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;}
+.cvstpn.active{background:var(--pr);border-color:var(--pr);color:#fff;}
+.cvstpn.done{background:var(--ok);border-color:var(--ok);color:#fff;}
+.cvstpl{font-family:'Lexend',sans-serif;font-size:11.5px;font-weight:700;}
+.cvstpl .t{color:var(--pr);}
+.cvstpl .s{font-size:10px;color:var(--gr);font-weight:400;}
+.cvline{flex:1;height:2px;background:var(--bd);max-width:50px;}
+
+/* Step 1: Position Input */
+.cv-pos-wrap{background:#fff;}
+.cv-pos-title{font-family:'Lexend',sans-serif;font-size:15px;font-weight:800;color:var(--dk);margin-bottom:5px;}
+.cv-pos-sub{font-size:12.5px;color:var(--gr);margin-bottom:16px;line-height:1.5;}
+.cv-pos-input-row{display:flex;gap:10px;margin-bottom:16px;}
+.cv-pos-input{flex:1;padding:13px 16px;border:2px solid var(--bd);border-radius:10px;font-size:14px;font-family:'Be Vietnam Pro',sans-serif;color:var(--dk);outline:none;transition:border-color .2s;}
+.cv-pos-input:focus{border-color:var(--pr);}
+.cv-pos-go{background:linear-gradient(135deg,var(--pr),var(--pd));color:#fff;border:none;padding:13px 22px;border-radius:10px;font-family:'Lexend',sans-serif;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.cv-pos-go:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,85,164,.3);}
+.cv-suggest-title{font-size:11.5px;font-weight:700;color:var(--gr);text-transform:uppercase;letter-spacing:.4px;margin-bottom:9px;}
+.cv-pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
+.cv-pill{padding:6px 13px;border-radius:20px;border:1.5px solid var(--bd);background:#fff;font-size:12px;font-weight:600;color:var(--dk);cursor:pointer;transition:all .2s;}
+.cv-pill:hover{border-color:var(--pr);color:var(--pr);background:rgba(0,85,164,.04);}
+.cv-pill.sel{border-color:var(--pr);color:var(--pr);background:rgba(0,85,164,.07);}
+.cv-jd-opt{margin-top:4px;}
+.cv-jd-opt summary{font-size:12px;font-weight:600;color:var(--pr);cursor:pointer;margin-bottom:8px;}
+.cv-jd-opt textarea{width:100%;min-height:90px;padding:11px;border:1.5px solid var(--bd);border-radius:8px;font-family:'Be Vietnam Pro',sans-serif;font-size:12.5px;color:var(--dk);outline:none;resize:vertical;}
+.cv-jd-opt textarea:focus{border-color:var(--pr);}
+
+/* Step 2: Upload */
+.cv-modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.cv-selected-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(0,85,164,.07);border:1px solid rgba(0,85,164,.2);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--pr);font-weight:600;margin-bottom:13px;}
+.cv-selected-pill .rm{cursor:pointer;color:var(--gr);margin-left:3px;font-size:14px;line-height:1;}
+.cv-selected-pill .rm:hover{color:var(--er);}
+.cvup{border:2px dashed rgba(0,85,164,.22);border-radius:11px;padding:26px 18px;text-align:center;cursor:pointer;background:var(--lt);transition:all .2s;}
+.cvup:hover,.cvup.drag{border-color:var(--pr);background:rgba(0,85,164,.04);}
+.cvup .ut{font-family:'Lexend',sans-serif;font-size:14.5px;font-weight:700;color:var(--pr);margin-bottom:4px;}
+.cvup .us{font-size:12px;color:var(--gr);}
+.cvfmt{display:flex;gap:5px;justify-content:center;margin-top:9px;flex-wrap:wrap;}
+.cvfmt span{background:rgba(0,85,164,.07);border:1px solid rgba(0,85,164,.14);color:var(--pr);padding:2px 8px;border-radius:18px;font-size:9.5px;font-weight:700;}
+.cvview{display:none;}
+.cvview.on{display:block;}
+.cvvbar{background:var(--pr);color:#fff;padding:8px 11px;border-radius:7px 7px 0 0;display:flex;align-items:center;gap:7px;}
+.cvvbar .vfn{flex:1;font-size:11.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cvpgc{display:flex;align-items:center;gap:4px;}
+.cvpbt{width:22px;height:22px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:4px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;}
+.cvpbt:disabled{opacity:.3;cursor:default;}
+.cvcanv{position:relative;background:#eee;border:1px solid var(--bd);border-top:none;border-radius:0 0 7px 7px;overflow:hidden;max-height:380px;overflow-y:auto;}
+.cvcanv canvas,.cvcanv img{display:block;width:100%;height:auto;}
+.cvhl{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+.cvpin{position:absolute;display:flex;align-items:center;gap:3px;transform:translateY(-50%);animation:pinPop .35s cubic-bezier(0.34,1.56,0.64,1) forwards;opacity:0;}
+@keyframes pinPop{to{opacity:1}}
+.cvpin-d{width:6px;height:6px;background:var(--gd);border-radius:50%;box-shadow:0 0 0 3px rgba(245,158,11,.22);flex-shrink:0;}
+.cvpin-l{background:rgba(245,158,11,.9);color:#451a03;font-family:'Lexend',sans-serif;font-size:8px;font-weight:800;padding:2px 6px;border-radius:3px;white-space:nowrap;}
+.cvtxt{display:none;font-size:11px;line-height:1.9;color:var(--dk);max-height:380px;overflow-y:auto;padding:12px;background:#fff;border:1px solid var(--bd);border-radius:7px;white-space:pre-wrap;}
+.cvtxt.on{display:block;}
+.cvtxt mark{background:rgba(245,158,11,.22);color:#7c2d12;border-radius:2px;padding:0 2px;font-weight:700;border-bottom:2px solid var(--gd);}
+.cvscan{display:none;width:100%;padding:12px;margin-top:11px;background:linear-gradient(135deg,var(--pr),var(--pd));color:#fff;border:none;border-radius:9px;font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:800;cursor:pointer;transition:all .2s;align-items:center;justify-content:center;gap:7px;}
+.cvscan.on{display:flex;}
+.cvscan:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(0,85,164,.32);}
+.cvdisc{font-size:11px;color:var(--gr);background:var(--lt);border:1px solid var(--bd);border-radius:6px;padding:9px 11px;line-height:1.55;margin-top:7px;}
+
+/* Step 3: Results */
+.cvres{display:flex;flex-direction:column;gap:11px;max-height:560px;overflow-y:auto;padding-right:2px;}
+.cvld{display:none;flex-direction:column;align-items:center;gap:12px;padding:28px;text-align:center;}
+.cvld.on{display:flex;}
+.cvspin{width:34px;height:34px;border:3px solid var(--bd);border-top-color:var(--pr);border-radius:50%;animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cvemp{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px;gap:9px;color:var(--gr);font-size:12.5px;text-align:center;opacity:.5;}
+
+/* Score ring */
+.cvsc{background:linear-gradient(135deg,#0c1e3c,#091524);border:1px solid rgba(0,85,164,.3);border-radius:12px;padding:17px;}
+.cvscr{display:flex;align-items:center;gap:14px;}
+.cvrw{position:relative;width:84px;height:84px;flex-shrink:0;}
+.cvrw svg{transform:rotate(-90deg);}
+.cvrbg{stroke:rgba(255,255,255,.06);}
+.cvrfg{stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1);}
+.cvrc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.cvrn{font-family:'Lexend',sans-serif;font-size:25px;font-weight:900;color:#fff;line-height:1;}
+.cvrp{font-size:10px;color:rgba(255,255,255,.4);margin-top:1px;}
+.cvtg{display:inline-block;font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:18px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px;}
+.tok{background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.28);color:#4ade80;}
+.tmid{background:rgba(0,85,164,.18);border:1px solid rgba(0,85,164,.38);color:#93c5fd;}
+.tlow{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.28);color:#fca5a5;}
+.cvv{font-family:'Lexend',sans-serif;font-size:14px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:4px;}
+.cvvs{font-size:11px;color:rgba(255,255,255,.55);line-height:1.5;}
+.cvcand{display:flex;align-items:center;gap:9px;margin-top:11px;padding:9px 11px;background:rgba(255,255,255,.05);border-radius:7px;}
+.cvav{width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,var(--pr),var(--ac));display:flex;align-items:center;justify-content:center;font-family:'Lexend',sans-serif;font-size:13px;font-weight:900;color:#fff;flex-shrink:0;}
+.cvcn{font-family:'Lexend',sans-serif;font-size:12.5px;font-weight:700;color:#fff;}
+.cvcm{font-size:10.5px;color:rgba(255,255,255,.42);margin-top:1px;}
+
+/* Stats chips */
+.cvstat{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
+.cvs{background:var(--lt);border:1px solid var(--bd);border-radius:7px;padding:9px 11px;}
+.cvsl{font-size:10px;color:var(--gr);font-weight:700;text-transform:uppercase;letter-spacing:.3px;margin-bottom:2px;}
+.cvsv{font-family:'Lexend',sans-serif;font-size:12.5px;font-weight:800;color:var(--dk);}
+.cvsv.ca{color:var(--ac);}.cvsv.cg{color:var(--ok);}.cvsv.co{color:var(--sec);}
+
+/* Education card */
+.edu-card{background:linear-gradient(135deg,#f0f7ff,#e8f4ff);border:1.5px solid rgba(0,85,164,.18);border-radius:11px;padding:14px;overflow:hidden;position:relative;}
+.edu-card::before{content:'EDU';position:absolute;right:-6px;top:-6px;font-family:'Lexend',sans-serif;font-size:56px;font-weight:900;color:rgba(0,85,164,.05);line-height:1;}
+.edu-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;}
+.edu-title{font-family:'Lexend',sans-serif;font-size:12px;font-weight:800;color:var(--pr);text-transform:uppercase;letter-spacing:.5px;}
+.edu-score{font-family:'Lexend',sans-serif;font-size:22px;font-weight:900;color:var(--pr);}
+.edu-score span{font-size:12px;font-weight:500;color:var(--gr);}
+.edu-bars{display:flex;flex-direction:column;gap:7px;margin-bottom:11px;}
+.ebar{display:flex;align-items:center;gap:9px;}
+.ebar-l{font-size:11px;color:var(--gr);width:90px;flex-shrink:0;}
+.ebar-t{flex:1;height:6px;background:rgba(0,0,0,.07);border-radius:3px;overflow:hidden;}
+.ebar-f{height:100%;border-radius:3px;transition:width 1.3s ease;}
+.ebar-v{font-family:'Lexend',sans-serif;font-size:11px;font-weight:800;color:var(--dk);width:32px;text-align:right;}
+.edu-details{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.edu-det{background:rgba(255,255,255,.7);border-radius:6px;padding:7px 9px;}
+.edu-det-l{font-size:10px;font-weight:700;color:var(--gr);text-transform:uppercase;letter-spacing:.3px;margin-bottom:2px;}
+.edu-det-v{font-size:12px;font-weight:700;color:var(--dk);}
+.edu-note{margin-top:9px;font-size:11.5px;color:var(--gr);line-height:1.5;padding-top:9px;border-top:1px solid rgba(0,85,164,.1);font-style:italic;}
+.tier-top{color:#16a34a;font-weight:800;}
+.tier-mid{color:var(--gd);font-weight:700;}
+.tier-int{color:var(--pu);font-weight:700;}
+.tier-low{color:var(--gr);font-weight:600;}
+
+/* KSAO */
+.ksao-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px;}
+.ksao-bx{background:#fff;border:1.5px solid var(--bd);border-radius:9px;padding:11px;}
+.ksao-lt{font-family:'Lexend',sans-serif;font-size:19px;font-weight:900;line-height:1;margin-bottom:2px;}
+.ksao-nm{font-size:9.5px;font-weight:700;color:var(--gr);text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px;}
+.ksao-sr{display:flex;align-items:center;gap:7px;}
+.ksao-pct{font-family:'Lexend',sans-serif;font-size:17px;font-weight:900;min-width:36px;}
+.ksao-bar{flex:1;height:6px;background:rgba(0,0,0,.07);border-radius:3px;overflow:hidden;}
+.ksao-fill{height:100%;border-radius:3px;transition:width 1.3s cubic-bezier(.4,0,.2,1);}
+.ksao-items{margin-top:7px;display:flex;flex-direction:column;gap:3px;}
+.ki{font-size:10.5px;display:flex;align-items:flex-start;gap:4px;line-height:1.4;}
+.ki .kd{width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.ki.ok .kd{background:var(--ok);}
+.ki.ok{color:var(--dk);}
+.ki.gap .kd{background:var(--sec);}
+.ki.gap{color:var(--sec);}
+
+/* SW + Roadmap */
+.cv-sw{display:flex;flex-direction:column;gap:6px;}
+.cv-swi{display:flex;gap:7px;padding:8px 10px;background:var(--lt);border-radius:7px;font-size:11.5px;color:var(--dk);line-height:1.5;border:1px solid var(--bd);}
+.roadmap{display:flex;flex-direction:column;gap:7px;}
+.rm-item{display:flex;gap:9px;padding:9px 11px;border-radius:8px;border:1.5px solid var(--bd);background:#fff;align-items:flex-start;}
+.rm-tag{flex-shrink:0;padding:2px 8px;border-radius:4px;font-size:9.5px;font-weight:800;letter-spacing:.3px;margin-top:1px;}
+.rm-now{background:rgba(239,68,68,.1);color:#dc2626;}
+.rm-3m{background:rgba(245,158,11,.12);color:#d97706;}
+.rm-6m{background:rgba(0,85,164,.09);color:var(--pr);}
+.rm-txt{font-size:11.5px;color:var(--dk);line-height:1.45;}
+.rm-rsn{font-size:10.5px;color:var(--gr);margin-top:2px;}
+
+/* Comment */
+.cvcmt{background:linear-gradient(135deg,rgba(0,194,168,.05),rgba(0,85,164,.03));border:1px solid rgba(0,194,168,.18);border-radius:9px;padding:13px;font-size:12px;color:var(--gr);line-height:1.8;}
+.cvevid{margin-top:9px;padding:8px 10px;background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.14);border-radius:6px;font-size:10.5px;color:#92400e;line-height:1.55;}
+.cvnext{margin-top:9px;padding:8px 10px;background:rgba(0,85,164,.05);border:1px solid rgba(0,85,164,.14);border-radius:6px;font-size:11px;color:var(--pr);line-height:1.55;}
+
+/* Ticket */
+.cvtk{background:linear-gradient(135deg,#1a0800,#2a1200);border:1.5px solid rgba(245,158,11,.38);border-radius:11px;padding:18px;text-align:center;animation:tGlow 2.5s ease-in-out infinite alternate;}
+@keyframes tGlow{from{box-shadow:0 0 18px rgba(245,158,11,.12)}to{box-shadow:0 0 45px rgba(245,158,11,.38)}}
+.cvtkt{font-family:'Lexend',sans-serif;font-size:17px;font-weight:900;color:var(--gd);margin-bottom:4px;}
+.cvtks{font-size:11.5px;color:rgba(255,255,255,.55);margin-bottom:12px;}
+.cvtkc{font-size:9.5px;color:rgba(255,255,255,.28);letter-spacing:1px;margin-top:9px;}
+
+.cvlbl{font-family:'Lexend',sans-serif;font-size:11px;font-weight:700;color:var(--gr);text-transform:uppercase;letter-spacing:.55px;margin-bottom:9px;}
+
+/* Responsive */
+@media(max-width:1100px){.main{grid-template-columns:1fr 1fr;}.sb{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr 1fr;}.hot-grid{grid-template-columns:1fr 1fr;}.fgrid{grid-template-columns:1fr 1fr;}.fg{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){.main{grid-template-columns:1fr;}.hbig{display:none;}.hrmm{display:none;}.hot-grid{grid-template-columns:1fr;}.fgrid{grid-template-columns:1fr;}.fg{grid-template-columns:1fr;}.hero{height:360px;}.h1{font-size:28px!important;}.cmp,.tcmp,.tform,.cvstat,.ksao-grid,.edu-details{grid-template-columns:1fr;}.carr{display:none;}.cv-modal-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-track" id="ticker-track"></div></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="c">
+    <div class="tl">
+      <a onclick="openM('m-tour')">Tin tức &amp; Sự kiện</a>
+      <a>Thông báo</a>
+      <a onclick="openM('m-tour')">Central Tech Tour</a>
+      <a onclick="openM('m-cv')">AI CV Scanner</a>
+      <a>Lịch sự kiện</a>
+    </div>
+    <div class="tr">
+      <a>Doanh nghiệp</a>
+      <a onclick="openM('m-ref')">Cộng đồng</a>
+      <a onclick="openM('m-cv')">Tuyển dụng</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="c">
+    <div class="logo">
+      <div class="logo-b">THH<span>2024</span></div>
+      <div class="logo-tx">
+        <span class="s1">Hệ sinh thái tuyển dụng số</span>
+        <span class="s2">TECH HOME <em>HUB</em></span>
+      </div>
+    </div>
+    <div class="hrmm">HR MASTERMIND<small>Competition 2026</small></div>
+    <div class="srch"><input type="text" placeholder="Tìm kiếm việc làm, công ty..."></div>
+    <div class="hbtns">
+      <button class="btn-ln" onclick="openM('m-auth');showTab('login')">Đăng nhập</button>
+      <button class="btn-rg" onclick="openM('m-auth');showTab('register')">Đăng ký</button>
+    </div>
+  </div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="nav">
+  <div class="c">
+    <span class="ni on" onclick="setNav(this)">GIỚI THIỆU</span>
+    <span class="ni" onclick="setNav(this);openM('m-tour')">CENTRAL TECH TOUR</span>
+    <span class="ni" onclick="setNav(this);openM('m-cv')">AI CV SCANNER</span>
+    <span class="ni" onclick="setNav(this);openM('m-calc')">LIFE-BALANCE TOOL</span>
+    <span class="ni" onclick="setNav(this);openM('m-vt')">VIRTUAL OFFICE TOUR</span>
+    <span class="ni" onclick="setNav(this);openM('m-ref')">CỘNG ĐỒNG IT</span>
+    <span class="ni" onclick="setNav(this);openM('m-cv')">TUYỂN DỤNG</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hs hs1 on">
+    <div class="si">
+      <span class="htag">Giai đoạn 3 — Tuyển dụng trực tiếp</span>
+      <h1 class="h1">ĐƯA ĐỒNG HƯƠNG<br><span style="color:var(--sec)">VỀ NHÀ</span></h1>
+      <div class="hsub">Central Tech Tour · Đà Nẵng 2026</div>
+      <p class="hp">Hệ sinh thái tuyển dụng số kết nối nhân tài IT từ Hà Nội & TP.HCM với các công ty công nghệ hàng đầu tại Đà Nẵng.</p>
+      <div class="hcta"><button class="btnp" onclick="openM('m-cv')">Scan CV ngay</button><button class="btno" onclick="openM('m-tour')">Đăng ký chuyến xe</button></div>
+    </div>
+    <div class="hbig"><div class="yr"><em>20</em><br><em style="color:var(--sec)">26</em></div><div class="lbl">CENTRAL TECH TOUR</div></div>
+  </div>
+  <div class="hs hs2">
+    <div class="si">
+      <span class="htag" style="background:var(--pr)">Tính năng mới</span>
+      <h1 class="h1">AI CV SCANNER<br><span style="color:var(--sec)">KSAO + Học vấn</span></h1>
+      <p class="hp">Upload CV → AI phân tích đa chiều: Kiến thức, Kỹ năng, Năng lực, Bằng cấp so với JD thực tế từ TopCV Đà Nẵng.</p>
+      <div class="hcta"><button class="btnp" onclick="openM('m-cv')">Thử ngay miễn phí</button><button class="btno" onclick="openM('m-cv')">Xem demo</button></div>
+    </div>
+  </div>
+  <div class="hs hs3">
+    <div class="si">
+      <span class="htag" style="background:var(--ac);color:var(--dk)">Life-Balance Tool</span>
+      <h1 class="h1">KẸT XE 1 TIẾNG<br><span style="color:var(--ac)">HAY 15 PHÚT ĐI BỘ</span><br>RA BIỂN?</h1>
+      <p class="hp">So sánh thu nhập thực sau chi phí sinh hoạt: thành phố hiện tại vs Đà Nẵng.</p>
+      <div class="hcta"><button class="btnp" onclick="openM('m-calc')">Tính toán ngay</button></div>
+    </div>
+  </div>
+  <div class="hdots"><div class="dd on" onclick="goSlide(0)"></div><div class="dd" onclick="goSlide(1)"></div><div class="dd" onclick="goSlide(2)"></div></div>
+</section>
+
+<!-- AUDIENCE BAR -->
+<div class="abar">
+  <div class="c">
+    <span class="ai on">Ứng viên IT</span>
+    <span class="ai">Sinh viên CNTT</span>
+    <span class="ai">Nhân viên IT Đà Nẵng</span>
+    <span class="ai" onclick="openM('m-ref')">Referral Program</span>
+    <span class="ai">Doanh nghiệp tuyển dụng</span>
+    <span class="hotline" onclick="alert('Hotline Zalo: 0905 xxx xxx')">Hotline Zalo</span>
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="main">
+  <!-- COL 1: THÔNG BÁO -->
+  <div>
+    <div class="st"><h2>Thông báo</h2><a>Xem tất cả</a></div>
+    <div class="nfeat" onclick="openM('m-tour')">
+      <div class="nph" style="background:linear-gradient(135deg,#0055A4,#003d7a 50%,#00C2A8)">Central Tech Tour 2026<br><span style="font-size:12px;opacity:.8;font-weight:400;margin-top:5px;display:block">Hà Nội → Đà Nẵng → TP.HCM</span></div>
+      <div class="nov"><h3>Mở đăng ký Central Tech Tour Giai đoạn 3 — Chỉ 50 suất trên chuyến xe</h3><div class="dt">20/03/2026</div></div>
+    </div>
+    <div class="nlist">
+      <div class="nit" onclick="openM('m-cv')"><div class="nimg" style="background:linear-gradient(135deg,#0055A4,#003d7a)">AI<br>Scanner</div><div><div class="nt">AI CV Scanner v3.0 — Gemini Vision đọc thẳng file PDF, phân tích KSAO + bằng cấp</div><div class="nd">20/03/2026</div></div></div>
+      <div class="nit" onclick="openM('m-ref')"><div class="nimg" style="background:linear-gradient(135deg,#00C2A8,#0055A4)">Referral</div><div><div class="nt">Bảng xếp hạng Referral tháng 3 — Top 3 nhận quà Tech cao cấp</div><div class="nd">15/03/2026</div></div></div>
+      <div class="nit" onclick="openM('m-vt')"><div class="nimg" style="background:linear-gradient(135deg,#FF6B00,#cc5500)">Virtual<br>Tour</div><div><div class="nt">Cập nhật 5 văn phòng mới — FPT, KMS, Axon Active, NashTech, Sky-Line</div><div class="nd">12/03/2026</div></div></div>
+    </div>
+  </div>
+
+  <!-- COL 2: TIN TỨC & SỰ KIỆN -->
+  <div>
+    <div class="st"><h2>Tin tức & Sự kiện</h2><a>Xem tất cả</a></div>
+    <div class="nfeat" onclick="openM('m-calc')">
+      <div class="nph" style="background:linear-gradient(135deg,#FF6B00,#cc3300 50%,#0A1628)">Life-Balance Calculator<br><span style="font-size:12px;opacity:.8;font-weight:400;margin-top:5px;display:block">So sánh chi phí thực tế</span></div>
+      <div class="nov"><h3>78% IT Hà Nội sẵn sàng chuyển về Đà Nẵng nếu lương tương đương</h3><div class="dt">19/03/2026</div></div>
+    </div>
+    <div class="nlist">
+      <div class="nit" onclick="openM('m-cv')"><div class="nimg" style="background:linear-gradient(135deg,#0A1628,#0055A4)">Golden<br>Ticket</div><div><div class="nt">Hướng dẫn nhận Tấm Vé Vàng — Matching >80% để lên chuyến xe thực tế</div><div class="nd">17/03/2026</div></div></div>
+      <div class="nit"><div class="nimg" style="background:linear-gradient(135deg,#00C2A8,#007a6e)">Năng lực</div><div><div class="nt">Công bố Bộ Từ điển Năng lực IT Đà Nẵng 2026 — 15 vị trí, 200+ tiêu chí</div><div class="nd">14/03/2026</div></div></div>
+      <div class="nit"><div class="nimg" style="background:linear-gradient(135deg,#8B5CF6,#0055A4)">Partnership</div><div><div class="nt">Tech Home Hub ký kết hợp tác với 12 công ty Tech Đà Nẵng cho chuyến xe tháng 4</div><div class="nd">10/03/2026</div></div></div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sb">
+    <div class="sc">
+      <div class="sc-h">Scan CV — Nhận vé vàng</div>
+      <div class="sc-b">
+        <p style="font-size:12px;color:var(--gr);line-height:1.5;margin-bottom:9px">AI đọc file PDF/ảnh CV, so sánh KSAO + bằng cấp với JD thật trên TopCV Đà Nẵng.</p>
+        <button style="width:100%;background:var(--sec);color:#fff;border:none;padding:9px;border-radius:7px;font-family:'Be Vietnam Pro',sans-serif;font-weight:700;font-size:13px;cursor:pointer" onclick="openM('m-cv')">Scan CV ngay</button>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sc-h">Thống kê hệ thống</div>
+      <div class="sc-b">
+        <div class="sgrid">
+          <div class="sbox"><div class="sn">12<em>K+</em></div><div class="sl">CV đã phân tích</div></div>
+          <div class="sbox"><div class="sn">94<em>%</em></div><div class="sl">Độ chính xác AI</div></div>
+          <div class="sbox"><div class="sn">50<em>+</em></div><div class="sl">Công ty đối tác</div></div>
+          <div class="sbox"><div class="sn">3<em>K+</em></div><div class="sl">Vị trí tuyển dụng</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sc-h">Truy cập nhanh</div>
+      <div class="sc-b">
+        <div class="ql">
+          <span class="qli" onclick="openM('m-cv')"><span class="qdot"></span>AI CV Scanner</span>
+          <span class="qli" onclick="openM('m-calc')"><span class="qdot"></span>Life-Balance Calculator</span>
+          <span class="qli" onclick="openM('m-vt')"><span class="qdot"></span>Virtual Office Tour</span>
+          <span class="qli" onclick="openM('m-ref')"><span class="qdot"></span>Referral Leaderboard</span>
+          <span class="qli" onclick="openM('m-tour')"><span class="qdot"></span>Đăng ký Central Tech Tour</span>
+          <span class="qli"><span class="qdot"></span>Bộ từ điển năng lực IT</span>
+          <span class="qli"><span class="qdot"></span>Hợp tác doanh nghiệp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOT NEWS CNTT -->
+<section style="background:linear-gradient(180deg,var(--lt),#fff);padding:8px 0 36px;border-top:2px solid var(--bd);">
+  <div class="hot-sec">
+    <div class="st" style="margin-bottom:18px">
+      <h2 style="display:flex;align-items:center;gap:9px">
+        <span style="background:linear-gradient(135deg,var(--er),#b91c1c);color:#fff;font-size:9px;font-weight:800;padding:3px 8px;border-radius:4px;letter-spacing:.6px;animation:hotPulse 2s ease-in-out infinite">HOT</span>
+        Bảng tin CNTT nổi bật
+      </h2>
+      <a>Xem tất cả tin tức</a>
+    </div>
+    <div class="hot-grid" id="hot-grid"></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="feat-sec">
+  <div class="c">
+    <div class="st"><h2>Tính năng nổi bật</h2><a>Khám phá thêm</a></div>
+    <div class="fgrid">
+      <div class="fc" onclick="openM('m-cv')"><div class="fc-n">01</div><div class="fc-t">AI CV Scanner</div><p>Upload PDF/ảnh CV — Gemini Vision đọc thẳng file, phân tích KSAO đa chiều kết hợp đánh giá học vấn/bằng cấp so với JD thật từ TopCV Đà Nẵng.</p><span class="ftag">Gemini Vision · KSAO + Edu</span></div>
+      <div class="fc" onclick="openM('m-calc')"><div class="fc-n">02</div><div class="fc-t">Life-Balance Calculator</div><p>So sánh lương thực tế sau chi phí sinh hoạt: Hà Nội, TP.HCM vs Đà Nẵng. Trực quan hóa từ tiền thuê nhà đến thời gian đi lại.</p><span class="ftag">JavaScript · Data Viz</span></div>
+      <div class="fc" onclick="openM('m-vt')"><div class="fc-n">03</div><div class="fc-t">Virtual Office Tour</div><p>Bản đồ Đà Nẵng tương tác: Click vào tòa nhà để xem thông tin văn phòng, kỹ năng yêu cầu của các công ty Tech hàng đầu.</p><span class="ftag">SVG · Interactive Map</span></div>
+      <div class="fc" onclick="openM('m-cv')"><div class="fc-n">04</div><div class="fc-t">Golden Ticket System</div><p>Matching >80% → Nhận QR Code Tấm Vé Vàng. Chỉ ứng viên có vé mới được lên chuyến xe thực tế Central Tech Tour.</p><span class="ftag">QR Code · Exclusive</span></div>
+      <div class="fc" onclick="openM('m-ref')"><div class="fc-n">05</div><div class="fc-t">Referral Leaderboard</div><p>Lấy link referral → Mời bạn bè scan CV. Bảng xếp hạng real-time, phần thưởng tech cho top ranker.</p><span class="ftag">Gamification · Real-time</span></div>
+      <div class="fc" onclick="openM('m-tour')"><div class="fc-n">06</div><div class="fc-t">Smart Route Matching</div><p>AI Matching xếp lộ trình chuyến xe: Chuyến A qua Startup, Chuyến B qua Tập đoàn Outsource lớn.</p><span class="ftag">Smart Routing · Personalized</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANIES -->
+<section class="co-sec">
+  <div class="c"><div class="st"><h2>Công ty IT tại Đà Nẵng</h2><a onclick="openM('m-vt')">Xem bản đồ</a></div></div>
+  <div class="co-wrap"><div class="co-track" id="co-track"></div></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="c">
+    <div class="fg">
+      <div>
+        <div class="hrmm-ft"><div class="t">HR MASTERMIND COMPETITION 2026</div><div class="s">Dự án xuất sắc — Kết hợp HRM & Web Development</div></div>
+        <div class="fl"><div class="fl-b">THH</div><div class="fl-t">TECH HOME <em>HUB</em></div></div>
+        <p class="fd">Hệ sinh thái tuyển dụng số kết nối nhân tài IT với cơ hội sự nghiệp tại Đà Nẵng.</p>
+        <div class="fa"><strong>Văn phòng đại diện:</strong><br>Đà Nẵng, Việt Nam<br>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a525f5656557a4e5f59525255575f524f58144c54">[email&#160;protected]</a><br>Hotline: 0905 xxx xxx (Zalo)</div>
+      </div>
+      <div class="fc2"><h4>Tính năng</h4><a onclick="openM('m-cv')">AI CV Scanner</a><a onclick="openM('m-calc')">Life-Balance Calculator</a><a onclick="openM('m-vt')">Virtual Office Tour</a><a onclick="openM('m-ref')">Referral System</a><a onclick="openM('m-cv')">Golden Ticket</a></div>
+      <div class="fc2"><h4>Central Tech Tour</h4><a>Giai đoạn 1</a><a>Giai đoạn 2</a><a onclick="openM('m-tour')">Giai đoạn 3 — Hiện tại</a><a onclick="openM('m-tour')">Đăng ký chuyến xe</a><a>Lịch sự kiện</a></div>
+      <div class="fc2"><h4>Đối tác & Cộng đồng</h4><a>Doanh nghiệp tuyển dụng</a><a onclick="openM('m-ref')">Cộng đồng IT Đà Nẵng</a><a>Bộ từ điển năng lực</a><a>Blog & Insights</a><a>Liên hệ hợp tác</a></div>
+    </div>
+    <div class="fb">
+      <span>© 2026 Tech Home Hub. Đưa đồng hương về nhà.</span>
+      <span style="color:var(--gd);font-weight:700">HR MASTERMIND Competition 2026</span>
+      <span>Xây dựng với tư duy HRM & Web Dev</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════ MODALS ═══════════════ -->
+
+<!-- AUTH -->
+<div class="ov" id="m-auth">
+  <div class="mb" style="max-width:460px">
+    <div class="mh"><h2 id="auth-title">Đăng nhập</h2><button class="mx" onclick="closeM('m-auth')">×</button></div>
+    <div class="mbd">
+      <div class="atabs"><div class="atab on" id="tab-ln" onclick="showTab('login')">Đăng nhập</div><div class="atab" id="tab-rg" onclick="showTab('register')">Đăng ký mới</div></div>
+      <div id="frm-ln">
+        <div style="display:flex;flex-direction:column;gap:13px">
+          <div class="fg2"><label>Email</label><input type="email" id="ln-email" placeholder="email@gmail.com"></div>
+          <div class="fg2"><label>Mật khẩu</label><input type="password" id="ln-pass" placeholder="••••••••"></div>
+          <button class="cta-f" onclick="doLogin()">Đăng nhập</button>
+          <div class="adiv">hoặc</div>
+          <div style="text-align:center;font-size:13px;color:var(--gr)">Chưa có tài khoản? <a style="color:var(--pr);font-weight:700;cursor:pointer" onclick="showTab('register')">Đăng ký ngay</a></div>
+        </div>
+      </div>
+      <div id="frm-rg" style="display:none">
+        <div style="display:flex;flex-direction:column;gap:13px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="fg2"><label>Họ và tên</label><input type="text" id="rg-name" placeholder="Nguyễn Văn A"></div>
+            <div class="fg2"><label>Số điện thoại</label><input type="tel" id="rg-phone" placeholder="0905 xxx xxx"></div>
+          </div>
+          <div class="fg2"><label>Email</label><input type="email" id="rg-email" placeholder="email@gmail.com"></div>
+          <div class="fg2"><label>Mật khẩu</label><input type="password" id="rg-pass" placeholder="Tối thiểu 8 ký tự"></div>
+          <div class="fg2"><label>Vị trí IT hiện tại</label>
+            <select id="rg-role"><option value="">-- Chọn vị trí --</option><option>Frontend Developer</option><option>Backend Developer</option><option>Fullstack Developer</option><option>Data Engineer / Analyst</option><option>DevOps / Cloud Engineer</option><option>UI/UX Designer</option><option>QA / Test Engineer</option><option>Product Manager</option><option>AI / ML Engineer</option><option>Sinh viên CNTT</option></select>
+          </div>
+          <div class="consent"><strong>Cam kết bảo mật thông tin</strong><br>Tech Home Hub cam kết bảo mật tuyệt đối theo pháp luật VN. Thông tin dùng để matching việc làm, không chia sẻ bên thứ ba.
+            <label class="cck"><input type="checkbox" id="cck"><span>Tôi đồng ý cho phép Tech Home Hub sử dụng thông tin để đối chiếu, matching và tuyệt đối bảo mật.</span></label>
+          </div>
+          <button class="cta-f" onclick="doReg()">Tạo tài khoản</button>
+          <div style="text-align:center;font-size:13px;color:var(--gr)">Đã có tài khoản? <a style="color:var(--pr);font-weight:700;cursor:pointer" onclick="showTab('login')">Đăng nhập</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CV SCANNER -->
+<div class="ov" id="m-cv">
+  <div class="mb" style="max-width:980px">
+    <div class="mh"><h2>AI CV Scanner — KSAO + Đánh giá Học vấn · Phân tích đa chiều</h2><button class="mx" onclick="closeM('m-cv')">×</button></div>
+    <div style="padding:0">
+      <!-- STEP INDICATOR -->
+      <div class="cvsteps">
+        <div class="cvstp">
+          <div class="cvstpn active" id="sn1">1</div>
+          <div class="cvstpl"><div class="t">Nhập vị trí</div><div class="s">Vị trí bạn muốn apply</div></div>
+        </div>
+        <div class="cvline"></div>
+        <div class="cvstp">
+          <div class="cvstpn" id="sn2">2</div>
+          <div class="cvstpl"><div id="sl2" style="font-size:11.5px;font-weight:700;color:var(--gr)">Upload CV</div><div class="s">PDF / ảnh / text</div></div>
+        </div>
+        <div class="cvline"></div>
+        <div class="cvstp">
+          <div class="cvstpn" id="sn3">3</div>
+          <div class="cvstpl"><div id="sl3" style="font-size:11.5px;font-weight:700;color:var(--gr)">Kết quả KSAO</div><div class="s">Phân tích đa chiều</div></div>
+        </div>
+      </div>
+
+      <div style="padding:20px 22px">
+        <!-- STEP 1 -->
+        <div id="cvs1">
+          <div class="cv-pos-title">Bước 1 — Bạn muốn ứng tuyển vị trí gì?</div>
+          <div class="cv-pos-sub">Nhập tên vị trí cụ thể để AI tạo bộ tiêu chí KSAO phù hợp, hoặc chọn nhanh từ gợi ý bên dưới.</div>
+          <div class="cv-pos-input-row">
+            <input class="cv-pos-input" id="cv-pos-input" type="text" placeholder="VD: Frontend Developer, Java Backend, AI Engineer, QA Tester...">
+            <button class="cv-pos-go" onclick="cvStep1Go()">Tiếp tục →</button>
+          </div>
+          <div class="cv-suggest-title">Gợi ý phổ biến tại Đà Nẵng 2026</div>
+          <div class="cv-pills" id="cv-pills"></div>
+          <details class="cv-jd-opt">
+            <summary>Tùy chọn: Dán JD cụ thể để phân tích chính xác hơn</summary>
+            <textarea id="cv-jd-txt" placeholder="Dán mô tả công việc (JD) bất kỳ vào đây — AI sẽ phân tích CV dựa trên đúng JD này..." style="margin-top:8px"></textarea>
+          </details>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="cvs2" style="display:none">
+          <div style="font-family:'Lexend',sans-serif;font-size:14px;font-weight:800;color:var(--dk);margin-bottom:5px">Bước 2 — Upload CV của bạn</div>
+          <div class="cv-selected-pill">
+            <span>Vị trí ứng tuyển:</span>
+            <strong id="cv-pos-pill">—</strong>
+            <span class="rm" onclick="cvBackStep1()">×</span>
+          </div>
+          <div class="cv-modal-grid">
+            <!-- LEFT: Upload + Viewer -->
+            <div style="display:flex;flex-direction:column;gap:11px">
+              <div class="cvup" id="cvup" onclick="document.getElementById('cvfi').click()" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="cvDrop(event)">
+                <div style="font-size:26px;margin-bottom:9px">📄</div>
+                <div class="ut" id="cv-uptitle">Kéo thả hoặc click để tải CV lên</div>
+                <div class="us">AI đọc thẳng file — không cần copy-paste thủ công</div>
+                <div class="cvfmt"><span>PDF</span><span>JPG/PNG</span><span>WEBP</span><span>TXT</span></div>
+              </div>
+              <input type="file" id="cvfi" accept=".pdf,.jpg,.jpeg,.png,.webp,.txt" onchange="cvFileSelect(event)" style="display:none">
+              <div class="cvview" id="cvview">
+                <div class="cvvbar">
+                  <span class="vfn" id="cvfname">—</span>
+                  <span style="font-size:10.5px;opacity:.65" id="cvpginfo"></span>
+                  <div class="cvpgc" id="cvpgc" style="display:none">
+                    <button class="cvpbt" id="cv-prev" onclick="cvChgPage(-1)">‹</button>
+                    <span style="font-size:10.5px;color:rgba(255,255,255,.55);margin:0 4px" id="cvpgn">1/1</span>
+                    <button class="cvpbt" id="cv-next" onclick="cvChgPage(1)">›</button>
+                  </div>
+                </div>
+                <div class="cvcanv" id="cvcanv"><div class="cvhl" id="cvhl"></div></div>
+              </div>
+              <div class="cvtxt" id="cvtxt"></div>
+              <button class="cvscan" id="cvscan" onclick="cvScan()">✦ Phân tích KSAO + Học vấn ngay</button>
+              <div class="cvdisc">Phân tích theo khung <strong>KSAO + Education</strong> — <strong>100% offline</strong>, không cần internet, không lưu trữ.</div>
+            </div>
+            <!-- RIGHT: Results -->
+            <div class="cvres" id="cvres">
+              <div class="cvld" id="cvld">
+                <div class="cvspin"></div>
+                <div style="font-family:'Lexend',sans-serif;font-weight:700;color:var(--pr);font-size:14px">Đang phân tích CV...</div>
+                <div style="font-size:12px;color:var(--gr);margin-top:4px">Đang đối chiếu KSAO · Học vấn · Kinh nghiệm...</div>
+              </div>
+              <div class="cvemp" id="cvemp">
+                <div style="font-size:40px;opacity:.25">🤖</div>
+                <p>Upload CV rồi nhấn phân tích<br>để xem kết quả KSAO đầy đủ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIFE-BALANCE -->
+<div class="ov" id="m-calc">
+  <div class="mb" style="max-width:620px">
+    <div class="mh"><h2>Life-Balance Calculator</h2><button class="mx" onclick="closeM('m-calc')">×</button></div>
+    <div class="mbd">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:16px">
+        <div class="fg2" style="grid-column:1/-1"><label>Mức lương hiện tại (triệu VNĐ/tháng)</label><input type="number" id="calc-sal" placeholder="VD: 25" min="5" max="200"></div>
+        <div class="fg2"><label>Thành phố hiện tại</label><select id="calc-city"><option value="hn">Hà Nội</option><option value="hcm">TP. Hồ Chí Minh</option></select></div>
+        <div class="fg2"><label>Lĩnh vực IT</label><select id="calc-field"><option>Developer / Engineer</option><option>Data / AI / ML</option><option>Product / PM</option><option>UI/UX Designer</option><option>DevOps / Cloud</option></select></div>
+      </div>
+      <button class="cta-f" onclick="calcBalance()">Tính toán ngay</button>
+      <div class="cres" id="calc-res" style="margin-top:18px">
+        <div class="ssec" style="margin-top:0">So sánh thu nhập thực tế</div>
+        <div class="cmp">
+          <div class="cc cur"><div class="cnm" id="cc-city">Hà Nội</div><div class="csal" style="color:var(--sec)" id="cc-sal">--</div><div class="cnet">Sau chi phí: <strong id="cc-net">--</strong></div></div>
+          <div class="carr">→</div>
+          <div class="cc dn"><div class="cnm">Đà Nẵng</div><div class="csal" style="color:var(--pr)" id="dn-sal">--</div><div class="cnet">Sau chi phí: <strong id="dn-net">--</strong></div></div>
+        </div>
+        <div class="ssec">Thời gian di chuyển hàng ngày</div>
+        <div class="tcmp">
+          <div class="tbox bad"><div class="tcit" id="tc-city">Hà Nội</div><div class="ttm" id="tc-time">60–90 phút</div><div class="tlb">kẹt xe trung bình/ngày</div></div>
+          <div class="tbox good"><div class="tcit">Đà Nẵng</div><div class="ttm">10–20 phút</div><div class="tlb">đi làm thoải mái</div></div>
+        </div>
+        <div class="ssec">Chi phí sinh hoạt so sánh</div>
+        <div class="cbrk" id="cbrk"></div>
+        <div class="verd"><div class="vt" id="v-t">--</div><div class="vs" id="v-s">--</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIRTUAL TOUR -->
+<div class="ov" id="m-vt">
+  <div class="mb" style="max-width:740px">
+    <div class="mh"><h2>Virtual Office Tour — Bản đồ Đà Nẵng</h2><button class="mx" onclick="closeM('m-vt')">×</button></div>
+    <div class="mbd">
+      <p style="font-size:13px;color:var(--gr);margin-bottom:14px">Click vào các điểm màu trên bản đồ để xem thông tin văn phòng công ty</p>
+      <div class="mapc" id="mapc">
+        <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <defs><linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#bfdbfe;stop-opacity:.6"/><stop offset="100%" style="stop-color:#93c5fd;stop-opacity:.5"/></linearGradient><linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#d1fae5"/><stop offset="100%" style="stop-color:#a7f3d0"/></linearGradient></defs>
+          <rect width="700" height="340" fill="url(#sg)" rx="12"/>
+          <path d="M70,20 L310,8 L470,28 L550,75 L590,145 L610,215 L575,298 L490,328 L370,328 L240,318 L140,288 L75,228 L55,148 Z" fill="url(#lg)" opacity=".92"/>
+          <line x1="90" y1="175" x2="555" y2="175" stroke="white" stroke-width="3.5" opacity=".52"/>
+          <line x1="295" y1="25" x2="295" y2="320" stroke="white" stroke-width="3.5" opacity=".52"/>
+          <line x1="140" y1="98" x2="490" y2="98" stroke="white" stroke-width="2" opacity=".35"/>
+          <line x1="170" y1="245" x2="510" y2="245" stroke="white" stroke-width="2" opacity=".35"/>
+          <path d="M115,195 Q195,184 275,196 Q355,208 435,192 Q495,180 555,186" fill="none" stroke="#93c5fd" stroke-width="9" opacity=".62"/>
+          <text x="345" y="278" f75" y="192" fill="#6b7280" font-size="10" text-anchor="middle" font-family="Be Vietnam Pro">Sông Hàn</text>
+          <text x="295" y="162" fill="#374151" font-size="13" font-weight="bold" text-anchor="middle" font-family="Be Vietnam Pro">ĐÀ NẴNG</text>
+          <g class="opin" onclick="showOff('fpt',175,125)"><circle cx="175" cy="125" r="16" fill="#0055A4" opacity=".22"/><circle cx="175" cy="125" r="11" fill="#0055A4"/><text x="175" y="129" fill="white" font-size="8.5" text-anchor="middle" font-family="Lexend" font-weight="bold">FPT</text></g>
+          <g class="opin" onclick="showOff('kms',278,218)"><circle cx="278" cy="218" r="16" fill="#FF6B00" opacity=".22"/><circle cx="278" cy="218" r="11" fill="#FF6B00"/><text x="278" y="222" fill="white" font-size="8" text-anchor="middle" font-family="Lexend" font-weight="bold">KMS</text></g>
+          <g class="opin" onclick="showOff('axon',398,136)"><circle cx="398" cy="136" r="16" fill="#00C2A8" opacity=".22"/><circle cx="398" cy="136" r="11" fill="#00C2A8"/><text x="398" y="140" fill="white" font-size="7.5" text-anchor="middle" font-family="Lexend" font-weight="bold">AXON</text></g>
+          <g class="opin" onclick="showOff('nash',198,248)"><circle cx="198" cy="248" r="16" fill="#8B5CF6" opacity=".22"/><circle cx="198" cy="248" r="11" fill="#8B5CF6"/><text x="198" y="252" fill="white" font-size="7.5" text-anchor="middle" font-family="Lexend" font-weight="bold">NASH</text></g>
+          <g class="opin" onclick="showOff('sun',458,198)"><circle cx="458" cy="198" r="16" fill="#f59e0b" opacity=".22"/><circle cx="458" cy="198" r="11" fill="#f59e0b"/><text x="458" y="202" fill="white" font-size="7.5" text-anchor="middle" font-family="Lexend" font-weight="bold">SUN*</text></g>
+          <g class="opin" onclick="showOff('sky',345,86)"><circle cx="345" cy="86" r="16" fill="#0A1628" opacity=".22"/><circle cx="345" cy="86" r="11" fill="#0A1628"/><text x="345" y="90" fill="white" font-size="7.5" text-anchor="middle" font-family="Lexend" font-weight="bold">SKY</text></g>
+        </svg>
+        <div class="opop" id="opop"><h4 id="op-n"></h4><div class="om" id="op-m"></div><div class="otags" id="op-t"></div><button class="obt" onclick="closeOff()">Đóng</button></div>
+      </div>
+      <div class="mleg">
+        <span><span class="ld" style="background:#0055A4"></span>FPT Software</span>
+        <span><span class="ld" style="background:#FF6B00"></span>KMS Technology</span>
+        <span><span class="ld" style="background:#00C2A8"></span>Axon Active</span>
+        <span><span class="ld" style="background:#8B5CF6"></span>NashTech</span>
+        <span><span class="ld" style="background:#f59e0b"></span>Sun* Inc</span>
+        <span><span class="ld" style="background:#0A1628"></span>Sky-Line</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REFERRAL -->
+<div class="ov" id="m-ref">
+  <div class="mb" style="max-width:660px">
+    <div class="mh"><h2>Referral Leaderboard — Tháng 3/2026</h2><button class="mx" onclick="closeM('m-ref')">×</button></div>
+    <div class="mbd">
+      <div class="refbox">
+        <div style="font-family:'Lexend',sans-serif;font-weight:700;font-size:14px">Link giới thiệu của bạn</div>
+        <div class="refl"><input id="ref-lnk" type="text" value="techhomehub.vn/ref/USER_CODE" readonly><button onclick="copyRef()">Sao chép</button></div>
+        <div style="font-size:11px;opacity:.72;margin-top:7px">Mỗi bạn bè scan CV qua link của bạn = +1 điểm tích lũy</div>
+      </div>
+      <div class="ssec" style="margin-top:0">Bảng xếp hạng tuần này</div>
+      <table class="lbt"><thead><tr><th>Hạng</th><th>Thành viên</th><th>Công ty</th><th>Điểm</th><th>Cấp</th></tr></thead><tbody id="lb-body"></tbody></table>
+      <div class="ssec" style="margin-top:18px">Phần thưởng tháng này</div>
+      <div class="plist">
+        <div class="pit"><div class="prk">Top 1</div><div>Bàn phím cơ Keychron K2 + Tai nghe Sony WH-1000XM5</div></div>
+        <div class="pit"><div class="prk">Top 2</div><div>Tai nghe ANC Bose QuietComfort 45</div></div>
+        <div class="pit"><div class="prk">Top 3</div><div>Webcam Logitech C920 + Hub USB-C 7 in 1</div></div>
+        <div class="pit"><div class="prk">Top 4–10</div><div>Voucher mua sắm Tech 500K + Áo Tech Home Hub Edition</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOUR -->
+<div class="ov" id="m-tour">
+  <div class="mb" style="max-width:580px">
+    <div class="mh"><h2>Đăng ký Central Tech Tour — Giai đoạn 3</h2><button class="mx" onclick="closeM('m-tour')">×</button></div>
+    <div class="mbd">
+      <div style="background:linear-gradient(135deg,#0055A4,#003d7a);color:#fff;border-radius:11px;padding:15px;margin-bottom:18px">
+        <div style="font-family:'Lexend',sans-serif;font-weight:800;font-size:15.5px;margin-bottom:5px">Chuyến xe "Đưa Đồng Hương Về Nhà"</div>
+        <div style="font-size:12px;opacity:.85;line-height:1.6">Xuất phát: Hà Nội & TP.HCM<br>Thăm 8 công ty Tech hàng đầu Đà Nẵng<br>Tháng 4/2026 · Chỉ 50 suất mỗi chuyến</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:18px">
+        <div style="background:var(--lt);border-radius:9px;padding:13px;text-align:center"><div style="font-family:'Lexend',sans-serif;font-size:25px;font-weight:900;color:var(--pr)">38<span style="font-size:15px;color:var(--sec)">/50</span></div><div style="font-size:12px;color:var(--gr);margin-top:3px">Chuyến A (HN)</div><div style="height:7px;background:var(--bd);border-radius:4px;overflow:hidden;margin-top:7px"><div style="height:100%;width:76%;background:linear-gradient(90deg,var(--pr),var(--ac));border-radius:4px"></div></div></div>
+        <div style="background:var(--lt);border-radius:9px;padding:13px;text-align:center"><div style="font-family:'Lexend',sans-serif;font-size:25px;font-weight:900;color:var(--pr)">22<span style="font-size:15px;color:var(--sec)">/50</span></div><div style="font-size:12px;color:var(--gr);margin-top:3px">Chuyến B (HCM)</div><div style="height:7px;background:var(--bd);border-radius:4px;overflow:hidden;margin-top:7px"><div style="height:100%;width:44%;background:linear-gradient(90deg,var(--pr),var(--ac));border-radius:4px"></div></div></div>
+      </div>
+      <div class="tform">
+        <div class="fg2"><label>Họ và tên</label><input type="text" id="tr-name" placeholder="Nguyễn Văn A"></div>
+        <div class="fg2"><label>Email</label><input type="email" id="tr-email" placeholder="email@gmail.com"></div>
+        <div class="fg2"><label>Số điện thoại</label><input type="tel" id="tr-phone" placeholder="0905 xxx xxx"></div>
+        <div class="fg2"><label>Thành phố khởi hành</label><select><option>Hà Nội — Chuyến A</option><option>TP. Hồ Chí Minh — Chuyến B</option></select></div>
+        <div class="fg2"><label>Vị trí IT hiện tại</label><input type="text" placeholder="VD: Frontend Developer"></div>
+        <div class="fg2"><label>Số năm kinh nghiệm</label><select><option>Dưới 1 năm</option><option>1–3 năm</option><option>3–5 năm</option><option>5+ năm</option></select></div>
+      </div>
+      <div style="margin-top:11px;font-size:12px;color:var(--gr);background:rgba(255,107,0,.07);padding:11px;border-radius:7px;border-left:3px solid var(--sec)">Lưu ý: Chỉ ứng viên có Tấm Vé Vàng (Matching >80%) mới được xác nhận suất cuối cùng. <a style="color:var(--pr);font-weight:700;cursor:pointer" onclick="closeM('m-tour');openM('m-cv')">Scan CV ngay</a></div>
+      <button class="cta-f" style="margin-top:14px" onclick="subTour()">Đăng ký ngay</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+// CV Analysis: Pure JS, no API needed
+
+// ── DATA ──
+const TICKER=[
+  {t:'Nếu cả đời không rực rỡ thì sao?',h:'Thì về Đà Nẵng — sáng đi làm, chiều ra biển'},
+  {t:'Nếu không thành công ở thành phố lớn thì sao?',h:'Thì về Đà Nẵng — sống chậm mà vẫn chất'},
+  {t:'Deadline dí sát mặt thì sao?',h:'Về Đà Nẵng — gió biển dí lại cho cân'},
+  {t:'Thấy mình đang "cháy" quá rồi thì sao?',h:'Về Đà Nẵng… để được "mát" lại'},
+  {t:'Sự nghiệp chưa đúng gu thì sao?',h:'Về Đà Nẵng — vừa có job xịn vừa có biển cạnh VP'},
+  {t:'Đang tìm work-life balance thật sự?',h:'Đà Nẵng không hứa nhiều — nhưng tan ca là thấy biển'},
+  {t:'Hà Nội – Sài Gòn cho bạn cơ hội,',h:'thì Đà Nẵng cho bạn cuộc sống'},
+  {t:'Kẹt xe mỗi ngày 2 tiếng — cộng lại 1 tháng bằng 60 tiếng,',h:'Đà Nẵng chỉ 20 phút đi làm, còn lại là của bạn'},
+];
+const COMPANIES=[
+  {n:'FPT Software',s:'3.000+ nhân viên',c:'#0055A4',a:'FPT'},
+  {n:'KMS Technology',s:'500+ nhân viên',c:'#FF6B00',a:'KMS'},
+  {n:'Axon Active',s:'400+ nhân viên',c:'#00C2A8',a:'AXON'},
+  {n:'NashTech VN',s:'600+ nhân viên',c:'#8B5CF6',a:'NASH'},
+  {n:'Sun* Inc',s:'800+ nhân viên',c:'#f59e0b',a:'SUN'},
+  {n:'Rikkeisoft',s:'1.200+ nhân viên',c:'#ef4444',a:'RKS'},
+  {n:'Global CyberSoft',s:'700+ nhân viên',c:'#06b6d4',a:'GCS'},
+  {n:'Harvey Nash VN',s:'500+ nhân viên',c:'#84cc16',a:'HNV'},
+  {n:'TMA Solutions',s:'3.500+ nhân viên',c:'#f97316',a:'TMA'},
+  {n:'Sky-Line Tech',s:'200+ nhân viên',c:'#0A1628',a:'SKY'},
+  {n:'Tomosia',s:'100+ nhân viên',c:'#ec4899',a:'TMS'},
+  {n:'Saritasa',s:'150+ nhân viên',c:'#6366f1',a:'SAR'},
+];
+const OFFICES={
+  fpt:{name:'FPT Software Đà Nẵng',meta:'3.000+ nhân viên · Quận Liên Chiểu\nLương: 15–35 triệu · Remote hybrid\nDự án Nhật Bản, Mỹ — môi trường quốc tế',tags:['Java','React','.NET','Python','Outsource']},
+  kms:{name:'KMS Technology',meta:'500+ nhân viên · Trung tâm TP\nLương: 20–45 triệu · Flexible WFH\nQA-focused, sản phẩm US market',tags:['QA/QC','React','Node.js','AWS']},
+  axon:{name:'Axon Active Vietnam',meta:'400+ nhân viên · Quận Hải Châu\nLương: 18–40 triệu · Agile culture\nDự án Thụy Sĩ/EU — Scrum/Agile',tags:['Java','Angular','Scrum','Azure']},
+  nash:{name:'NashTech Vietnam',meta:'600+ nhân viên · Quận Sơn Trà\nLương: 15–35 triệu · T&L culture\nGlobal delivery center',tags:['C#','.NET','React','DevOps']},
+  sun:{name:'Sun* Inc (Framgia)',meta:'800+ nhân viên · Quận Ngũ Hành Sơn\nLương: 15–30 triệu · Startup vibe\nDự án Nhật Bản, môi trường trẻ',tags:['Laravel','Vue.js','iOS','Android']},
+  sky:{name:'Sky-Line Technologies',meta:'200+ nhân viên · Quận Thanh Khê\nLương: 20–50 triệu · R&D focused\nProduct company, AI/ML',tags:['Golang','Kubernetes','AI/ML','Product']}
+};
+const LB=[
+  {n:'Nguyễn Minh Tuấn',c:'VNG Corp (HCM)',p:47,lv:'lg',lt:'Gold'},
+  {n:'Trần Thị Lan Anh',c:'Viettel Digital',p:38,lv:'lg',lt:'Gold'},
+  {n:'Lê Hoàng Nam',c:'MoMo',p:31,lv:'ls',lt:'Silver'},
+  {n:'Phạm Thị Hương',c:'Tiki (HCM)',p:24,lv:'ls',lt:'Silver'},
+  {n:'Vũ Đức Mạnh',c:'FPT IS (HN)',p:19,lv:'lb2',lt:'Bronze'},
+  {n:'Đặng Thị Thu',c:'Shopee Vietnam',p:15,lv:'lb2',lt:'Bronze'},
+  {n:'Ngô Quang Hải',c:'Grab Vietnam',p:11,lv:'lb2',lt:'Bronze'},
+];
+const PILLS=['Frontend Developer','Backend Developer','Fullstack Developer','Java Developer','React/Next.js Developer','Mobile Developer (Flutter)','DevOps / Cloud Engineer','QA / Test Engineer','Data Engineer','AI/ML Engineer','UI/UX Designer','Product Manager','IT Sales B2B','Business Analyst'];
+const HOT_NEWS=[
+  {cat:'Thị trường việc làm',catColor:'#0055A4',catBg:'rgba(0,85,164,.1)',top:'#0055A4',title:'Thị trường IT Đà Nẵng 2026: Nhu cầu tuyển dụng tăng 34% so với năm ngoái',desc:'Các công ty Nhật Bản và châu Âu đẩy mạnh mở rộng tại Đà Nẵng, tập trung vào Java, React và Cloud.',src:'TopCV Vietnam',date:'20/03/2026'},
+  {cat:'Lương & Đãi ngộ',catColor:'#16a34a',catBg:'rgba(22,163,74,.1)',top:'#16a34a',title:'Lương Senior Developer tại Đà Nẵng đạt 45–80 triệu/tháng — ngang Hà Nội',desc:'Khảo sát 500 lập trình viên cho thấy khoảng cách lương giữa 3 miền đang thu hẹp đáng kể.',src:'iViettech',date:'19/03/2026'},
+  {cat:'Công nghệ',catColor:'#8B5CF6',catBg:'rgba(139,92,246,.1)',top:'#8B5CF6',title:'AI và Machine Learning: Kỹ năng hot nhất năm 2026, lương tăng 40% so với 2024',desc:'Nhu cầu AI Engineer tăng vọt, các công ty sẵn sàng offer 50–120 triệu cho ứng viên giỏi.',src:'VietnamWorks',date:'18/03/2026'},
+  {cat:'Giáo dục & Chứng chỉ',catColor:'#f59e0b',catBg:'rgba(245,158,11,.1)',top:'#f59e0b',title:'AWS, GCP hay Azure? Bảng xếp hạng chứng chỉ Cloud được săn đón nhất năm 2026',desc:'Chứng chỉ AWS Solutions Architect và Google Cloud Professional Engineer đứng top tuyển dụng.',src:'ITviec',date:'17/03/2026'},
+  {cat:'Chuyển đổi số',catColor:'#00C2A8',catBg:'rgba(0,194,168,.1)',top:'#00C2A8',title:'70% doanh nghiệp Đà Nẵng đẩy mạnh chuyển đổi số — cơ hội cho IT địa phương',desc:'Thành phố thông minh Đà Nẵng tạo sóng tuyển dụng mới: IoT, Smart City, Big Data.',src:'VnExpress Tech',date:'16/03/2026'},
+  {cat:'Remote Work',catColor:'#ef4444',catBg:'rgba(239,68,68,.1)',top:'#ef4444',title:'Remote từ Đà Nẵng: Công thức work-life balance được 12.000 IT người Việt áp dụng',desc:'Chi phí thấp, biển gần, múi giờ thuận lợi với EU — Đà Nẵng thành điểm đến của nomad IT.',src:'Thanh Niên Online',date:'15/03/2026'},
+  {cat:'Startup',catColor:'#06b6d4',catBg:'rgba(6,182,212,.1)',top:'#06b6d4',title:'Hệ sinh thái startup công nghệ Đà Nẵng 2026: 3 kỳ lân mới xuất hiện',desc:'Đà Nẵng đang nổi lên như một trung tâm khởi nghiệp công nghệ với nhiều vườn ươm hỗ trợ.',src:'Entrepreneur VN',date:'14/03/2026'},
+  {cat:'Kỹ năng mềm',catColor:'#f97316',catBg:'rgba(249,115,22,.1)',top:'#f97316',title:'Tại sao nhà tuyển dụng IT ngày càng chú trọng tiếng Anh và kỹ năng thuyết trình?',desc:'Dự án quốc tế chiếm 65% tại các công ty outsource Đà Nẵng, tiếng Anh trở thành bắt buộc.',src:'CareerBuilder',date:'13/03/2026'},
+];
+
+// ── INIT ──
+(function(){
+  const t=document.getElementById('ticker-track');
+  let h='';for(let i=0;i<2;i++) TICKER.forEach(m=>{h+=`<span class="ti">${m.t} <span class="h">${m.h}</span><span class="sep">✦</span></span>`;});
+  t.innerHTML=h;
+})();
+(function(){
+  const t=document.getElementById('co-track');
+  let h='';for(let i=0;i<2;i++) COMPANIES.forEach(c=>{h+=`<div class="cocard" onclick="openM('m-vt')"><div class="colg" style="background:${c.c}">${c.a}</div><div class="conm">${c.n}</div><div class="cosn">${c.s}</div></div>`;});
+  t.innerHTML=h;
+})();
+(function(){
+  const g=document.getElementById('hot-grid');
+  g.innerHTML=HOT_NEWS.map(n=>`
+    <div class="hcard" onclick="alert('${n.title}\\n\\n${n.desc}\\n\\nNguồn: ${n.src}')">
+      <div class="hcard-top" style="background:${n.top}"></div>
+      <div class="hcard-bd">
+        <span class="hcat" style="background:${n.catBg};color:${n.catColor}">${n.cat}</span>
+        <h4>${n.title}</h4>
+        <p>${n.desc}</p>
+        <div class="hcard-ft"><span class="src">${n.src}</span><span class="date">${n.date}</span></div>
+      </div>
+    </div>`).join('');
+})();
+document.getElementById('lb-body').innerHTML=LB.map((r,i)=>`<tr><td><div class="rb ${i<3?'r'+(i+1):'rx'}">${i+1}</div></td><td style="font-weight:600">${r.n}</td><td style="color:var(--gr)">${r.c}</td><td style="font-family:'Lexend',sans-serif;font-weight:800;color:var(--pr)">${r.p}</td><td><span class="lvb ${r.lv}">${r.lt}</span></td></tr>`).join('');
+(function(){
+  const p=document.getElementById('cv-pills');
+  p.innerHTML=PILLS.map(s=>`<span class="cv-pill" onclick="selectPill(this,'${s}')">${s}</span>`).join('');
+})();
+
+// ── HERO SLIDER ──
+let cur=0;
+const SLS=document.querySelectorAll('.hs'),DTS=document.querySelectorAll('.dd');
+function goSlide(n){SLS[cur].classList.remove('on');DTS[cur].classList.remove('on');cur=n;SLS[n].classList.add('on');DTS[n].classList.add('on');}
+setInterval(()=>goSlide((cur+1)%SLS.length),5500);
+
+// ── NAV & MODALS ──
+function setNav(el){document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));el.classList.add('on');}
+function openM(id){document.getElementById(id).classList.add('on');document.body.style.overflow='hidden';}
+function closeM(id){document.getElementById(id).classList.remove('on');document.body.style.overflow='';}
+document.querySelectorAll('.ov').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeM(m.id);}));
+
+// ── AUTH ──
+function showTab(t){
+  document.getElementById('frm-ln').style.display=t==='login'?'block':'none';
+  document.getElementById('frm-rg').style.display=t==='register'?'block':'none';
+  document.getElementById('tab-ln').classList.toggle('on',t==='login');
+  document.getElementById('tab-rg').classList.toggle('on',t==='register');
+  document.getElementById('auth-title').textContent=t==='login'?'Đăng nhập':'Đăng ký tài khoản';
+}
+// Auth state (in-memory)
+let authUser=null;
+function doLogin(){
+  const e=document.getElementById('ln-email').value.trim(),p=document.getElementById('ln-pass').value.trim();
+  if(!e||!p){showToast('⚠️ Vui lòng nhập đầy đủ Email và Mật khẩu!','#ef4444');return;}
+  if(p.length<6){showToast('⚠️ Mật khẩu tối thiểu 6 ký tự!','#ef4444');return;}
+  authUser={email:e,name:e.split('@')[0]};
+  updateAuthUI();
+  closeM('m-auth');
+  showToast('✓ Đăng nhập thành công! Chào mừng '+authUser.name,'#22c55e');
+}
+function doReg(){
+  const n=document.getElementById('rg-name').value.trim(),e=document.getElementById('rg-email').value.trim(),p=document.getElementById('rg-pass').value.trim(),c=document.getElementById('cck').checked;
+  if(!n||!e||!p){showToast('⚠️ Vui lòng điền đầy đủ thông tin!','#ef4444');return;}
+  if(!c){showToast('⚠️ Vui lòng đồng ý điều khoản bảo mật!','#ef4444');return;}
+  if(p.length<8){showToast('⚠️ Mật khẩu tối thiểu 8 ký tự!','#ef4444');return;}
+  authUser={email:e,name:n};
+  updateAuthUI();
+  closeM('m-auth');
+  showToast('✓ Đăng ký thành công! Chào mừng '+n+' gia nhập Tech Home Hub','#22c55e');
+}
+function doLogout(){
+  authUser=null;updateAuthUI();
+  showToast('Đã đăng xuất thành công','#6B7A99');
+}
+function updateAuthUI(){
+  const btns=document.querySelector('.hbtns');
+  if(!btns)return;
+  if(authUser){
+    btns.innerHTML=`<div style="display:flex;align-items:center;gap:9px">
+      <div style="background:var(--pr);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:Lexend,sans-serif;font-weight:800;font-size:13px">${authUser.name[0].toUpperCase()}</div>
+      <span style="font-size:13px;font-weight:600;color:var(--dk)">${authUser.name}</span>
+      <button onclick="doLogout()" style="background:var(--lt);color:var(--gr);border:1.5px solid var(--bd);padding:6px 12px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer">Đăng xuất</button>
+    </div>`;
+  } else {
+    btns.innerHTML=`<button class="btn-ln" onclick="openM('m-auth');showTab('login')">Đăng nhập</button><button class="btn-rg" onclick="openM('m-auth');showTab('register')">Đăng ký</button>`;
+  }
+}
+function showToast(msg,color){
+  const t=document.createElement('div');
+  t.style.cssText=`position:fixed;bottom:24px;right:24px;background:${color};color:#fff;padding:12px 20px;border-radius:10px;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;font-weight:600;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.2);animation:mIn .3s ease;max-width:320px;line-height:1.4`;
+  t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),3500);
+}
+
+// ── CV SCANNER ──
+let cvPdf=null,cvPage=1,cvTotal=1,cvB64=null,cvMime=null,cvIsText=false,cvText='',cvPosText='';
+
+function selectPill(el,val){
+  document.querySelectorAll('.cv-pill').forEach(p=>p.classList.remove('sel'));
+  el.classList.add('sel');
+  document.getElementById('cv-pos-input').value=val;
+}
+function cvStep1Go(){
+  const pos=document.getElementById('cv-pos-input').value.trim();
+  const jdTxt=document.getElementById('cv-jd-txt').value.trim();
+  if(!pos){alert('Vui lòng nhập vị trí bạn muốn ứng tuyển!');return;}
+  cvPosText=pos+(jdTxt?'\n\nMô tả công việc tùy chỉnh:\n'+jdTxt:'');
+  document.getElementById('cv-pos-pill').textContent=pos;
+  document.getElementById('cvs1').style.display='none';
+  document.getElementById('cvs2').style.display='block';
+  document.getElementById('sn1').classList.remove('active');document.getElementById('sn1').classList.add('done');document.getElementById('sn1').textContent='✓';
+  document.getElementById('sn2').classList.add('active');document.getElementById('sl2').style.color='var(--pr)';
+}
+function cvBackStep1(){
+  document.getElementById('cvs2').style.display='none';
+  document.getElementById('cvs1').style.display='block';
+  document.getElementById('sn1').classList.add('active');document.getElementById('sn1').classList.remove('done');document.getElementById('sn1').textContent='1';
+  document.getElementById('sn2').classList.remove('active');document.getElementById('sl2').style.color='var(--gr)';
+}
+function cvDrop(e){e.preventDefault();document.getElementById('cvup').classList.remove('drag');const f=e.dataTransfer.files[0];if(f)cvProcess(f);}
+function cvFileSelect(e){const f=e.target.files[0];if(f)cvProcess(f);}
+async function cvProcess(file){
+  const ext=file.name.split('.').pop().toLowerCase();
+  document.getElementById('cv-uptitle').textContent='✓ '+file.name;
+  document.getElementById('cvfname').textContent=file.name;
+  if(['jpg','jpeg','png','webp'].includes(ext))await cvLoadImg(file);
+  else if(ext==='pdf')await cvLoadPDF(file);
+  else await cvLoadTxt(file);
+  const btn=document.getElementById('cvscan');btn.style.display='flex';btn.classList.add('on');
+}
+async function cvLoadImg(f){
+  cvIsText=false;const b64=await cvToB64(f);cvB64=b64.split(',')[1];cvMime=f.type;
+  const img=document.createElement('img');img.src=b64;
+  const box=document.getElementById('cvcanv');cvClrCanv(box);box.insertBefore(img,box.firstChild);
+  document.getElementById('cvview').classList.add('on');document.getElementById('cvtxt').classList.remove('on');
+}
+async function cvLoadPDF(f){
+  cvIsText=false;const b64=await cvToB64(f);cvB64=b64.split(',')[1];cvMime='application/pdf';
+  const buf=await f.arrayBuffer();
+  try{
+    cvPdf=await pdfjsLib.getDocument({data:buf}).promise;
+    cvTotal=cvPdf.numPages;cvPage=1;
+    await cvRenderPg(1);
+    document.getElementById('cvview').classList.add('on');document.getElementById('cvtxt').classList.remove('on');
+    document.getElementById('cvpginfo').textContent=cvTotal+' trang';
+    if(cvTotal>1){document.getElementById('cvpgc').style.display='flex';cvUpdPager();}
+  }catch(err){
+    cvIsText=true;cvText='[PDF: '+f.name+']';cvB64=btoa(unescape(encodeURIComponent(cvText)));cvMime='text/plain';
+    const tv=document.getElementById('cvtxt');tv.textContent=cvText;tv.classList.add('on');
+    document.getElementById('cvview').classList.remove('on');
+  }
+}
+async function cvRenderPg(n){
+  const page=await cvPdf.getPage(n);const vp=page.getViewport({scale:1.7});
+  const cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;
+  await page.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+  const box=document.getElementById('cvcanv');cvClrCanv(box);box.insertBefore(cv,box.firstChild);
+  const tc=await page.getTextContent();cvText=tc.items.map(i=>i.str).join(' ');
+}
+async function cvChgPage(d){cvPage=Math.max(1,Math.min(cvTotal,cvPage+d));await cvRenderPg(cvPage);cvUpdPager();cvClrHL();}
+function cvUpdPager(){
+  document.getElementById('cvpgn').textContent=cvPage+'/'+cvTotal;
+  document.getElementById('cv-prev').disabled=cvPage<=1;document.getElementById('cv-next').disabled=cvPage>=cvTotal;
+}
+async function cvLoadTxt(f){
+  cvIsText=true;cvText=await f.text();cvB64=btoa(unescape(encodeURIComponent(cvText)));cvMime='text/plain';
+  document.getElementById('cvtxt').textContent=cvText;document.getElementById('cvtxt').classList.add('on');
+  document.getElementById('cvview').classList.remove('on');
+}
+
+async function cvScan(){
+  document.getElementById('cvld').classList.add('on');
+  document.getElementById('cvemp').style.display='none';
+  document.getElementById('sn2').classList.remove('active');document.getElementById('sn2').classList.add('done');document.getElementById('sn2').textContent='✓';
+  document.getElementById('sn3').classList.add('active');document.getElementById('sl3').style.color='var(--pr)';
+
+  // Simulate analysis time
+  await new Promise(r=>setTimeout(r,1800));
+
+  try{
+    // Get CV text to analyze
+    let text = cvText || '';
+    const pos = cvPosText.toLowerCase();
+
+    // === KEYWORD DATABASES per role ===
+    // ============================================================
+    // JD DATABASE — 14 vị trí chuẩn thị trường Đà Nẵng 2026
+    // Nguồn: TopCV, iViettech, FPT/KMS/Axon/Sun* JD thực tế
+    // ============================================================
+    const DB = {
+
+      // ── 1. FRONTEND ──────────────────────────────────────────
+      frontend: {
+        required: ['html5','css3','scss','tailwind','javascript','es6','react','vue','angular','typescript','responsive','restful api','git','figma'],
+        niceToHave: ['next.js','nuxt','ssr','web performance','seo','webpack','vite','redux','context api','jest','cypress','storybook','graphql'],
+        certs: ['aws','google','meta','udemy','coursera','pluralsight','frontend masters','javascript'],
+        langs: ['english','tiếng anh','toeic','ielts','toefl','japanese','tiếng nhật','jlpt','n3','n2'],
+        abilities: ['ui','ux','pixel perfect','cross browser','component','design system','code review','agile','scrum','sprint','deadline','teamwork','nhóm'],
+        salary: {fresher:'6–10 triệu',junior:'12–20 triệu',middle:'20–32 triệu',senior:'32–55 triệu'}
+      },
+
+      // ── 2. BACKEND ───────────────────────────────────────────
+      backend: {
+        required: ['java','python','node.js','php','golang','c#','.net','sql','restful api','postgresql','mysql','git','linux'],
+        niceToHave: ['microservices','docker','redis','kafka','rabbitmq','grpc','elasticsearch','mongodb','aws','azure','gcp','ci/cd','kubernetes'],
+        certs: ['aws','oracle','java','spring','azure','gcp','oca','ocp','microsoft','python'],
+        langs: ['english','tiếng anh','toeic','ielts','japanese','tiếng nhật','jlpt'],
+        abilities: ['system design','scalability','clean code','solid','design pattern','code review','agile','scrum','teamwork','nhóm','documentation'],
+        salary: {fresher:'7–12 triệu',junior:'14–22 triệu',middle:'22–35 triệu',senior:'35–65 triệu'}
+      },
+
+      // ── 3. FULLSTACK ─────────────────────────────────────────
+      fullstack: {
+        required: ['html','css','javascript','react','vue','java','node.js','python','sql','restful api','git','docker'],
+        niceToHave: ['typescript','next.js','spring boot','microservices','system design','redis','aws','ci/cd','postgresql','mongodb'],
+        certs: ['aws','azure','gcp','oracle','java','google'],
+        langs: ['english','tiếng anh','toeic','ielts','japanese','tiếng nhật'],
+        abilities: ['full-stack','end-to-end','system design','agile','scrum','teamwork','nhóm','ownership','code review'],
+        salary: {fresher:'8–13 triệu',junior:'15–25 triệu',middle:'25–40 triệu',senior:'40–70 triệu'}
+      },
+
+      // ── 4. JAVA DEVELOPER ────────────────────────────────────
+      java: {
+        required: ['java','java core','spring boot','hibernate','jpa','unit test','junit','sql','postgresql','mysql','git','maven','gradle'],
+        niceToHave: ['aws','kafka','rabbitmq','docker','kubernetes','ci/cd','microservices','redis','elasticsearch','spring security','spring cloud'],
+        certs: ['oracle','oca','ocp','java','aws','spring','java se 11','java se 17'],
+        langs: ['english','tiếng anh','toeic','ielts','japanese','tiếng nhật','jlpt','n3','n2'],
+        abilities: ['enterprise','clean code','solid','design pattern','code review','agile','scrum','sprint','documentation'],
+        salary: {fresher:'8–13 triệu',junior:'15–25 triệu',middle:'25–40 triệu',senior:'40–70 triệu'}
+      },
+
+      // ── 5. REACT / NEXT.JS ───────────────────────────────────
+      react: {
+        required: ['react','react hooks','context api','typescript','javascript','next.js','restful api','git','html','css'],
+        niceToHave: ['redux','redux toolkit','tanstack query','react query','ssr','ssg','isr','tailwind','jest','react testing library','cypress','storybook','graphql','websocket'],
+        certs: ['meta','aws','udemy','react','javascript','frontend masters'],
+        langs: ['english','tiếng anh','toeic','ielts','japanese','tiếng nhật'],
+        abilities: ['component','reusable','performance','code review','figma','responsive','agile','scrum','teamwork'],
+        salary: {fresher:'7–12 triệu',junior:'14–22 triệu',middle:'22–35 triệu',senior:'35–60 triệu'}
+      },
+
+      // ── 6. MOBILE (FLUTTER) ──────────────────────────────────
+      mobile: {
+        required: ['flutter','dart','bloc','provider','riverpod','rest api','git','ios','android','app store','google play','firebase'],
+        niceToHave: ['flutter web','swift','kotlin','native integration','push notification','firebase analytics','in-app purchase','mvvm','clean architecture','fastlane'],
+        certs: ['google','apple','flutter','android','ios','firebase'],
+        langs: ['english','tiếng anh','toeic','ielts','japanese','tiếng nhật','jlpt'],
+        abilities: ['cross-platform','ui','ux','publish','agile','scrum','teamwork','performance'],
+        salary: {fresher:'7–12 triệu',junior:'13–22 triệu',middle:'22–35 triệu',senior:'35–60 triệu'}
+      },
+
+      // ── 7. DEVOPS / CLOUD ────────────────────────────────────
+      devops: {
+        required: ['docker','kubernetes','linux','ci/cd','aws','azure','gcp','git','jenkins','gitlab','bash','monitoring','nginx'],
+        niceToHave: ['terraform','ansible','helm','prometheus','grafana','elk stack','devseops','security','iam','vpc','load balancer','auto scaling'],
+        certs: ['aws','cka','ckad','azure','gcp','terraform','linux','devops','docker'],
+        langs: ['english','tiếng anh','toeic','ielts'],
+        abilities: ['automation','infrastructure','scalability','reliability','on-call','incident','documentation','agile','scrum'],
+        salary: {fresher:'10–16 triệu',junior:'18–28 triệu',middle:'28–45 triệu',senior:'45–80 triệu'}
+      },
+
+      // ── 8. DATA ENGINEER ─────────────────────────────────────
+      data: {
+        required: ['python','sql','spark','hadoop','etl','airflow','kafka','postgresql','bigquery','data warehouse','data pipeline','git'],
+        niceToHave: ['scala','snowflake','databricks','dbt','flink','aws glue','redshift','data lake','pandas','pyspark','orchestration'],
+        certs: ['aws','gcp','databricks','apache','dbt','google analytics','azure'],
+        langs: ['english','tiếng anh','toeic','ielts'],
+        abilities: ['data modeling','pipeline','optimization','documentation','agile','teamwork','problem solving'],
+        salary: {fresher:'10–16 triệu',junior:'18–30 triệu',middle:'30–50 triệu',senior:'50–85 triệu'}
+      },
+
+      // ── 9. AI / ML ENGINEER ──────────────────────────────────
+      ai: {
+        required: ['python','pytorch','tensorflow','scikit-learn','numpy','pandas','machine learning','deep learning','nlp','statistics','git'],
+        niceToHave: ['llm','gpt','fine-tuning','rag','langchain','hugging face','computer vision','mlops','docker','aws sagemaker','vertex ai','transformer','bert'],
+        certs: ['aws','gcp','tensorflow','deep learning','coursera','fast.ai','azure ai'],
+        langs: ['english','tiếng anh','toeic','ielts'],
+        abilities: ['research','experiment','model evaluation','paper reading','documentation','agile','teamwork'],
+        salary: {fresher:'12–18 triệu',junior:'20–35 triệu',middle:'35–60 triệu',senior:'60–120 triệu'}
+      },
+
+      // ── 10. QA / TEST ────────────────────────────────────────
+      qa: {
+        required: ['test plan','test case','bug report','selenium','playwright','jira','api testing','postman','regression','smoke test','sanity test','git'],
+        niceToHave: ['performance test','jmeter','appium','mobile testing','java','python','junit','testng','istqb','load test','stlc','sdlc'],
+        certs: ['istqb','selenium','java','automation','postman','appium'],
+        langs: ['english','tiếng anh','toeic','ielts','japanese','tiếng nhật','jlpt'],
+        abilities: ['attention to detail','analytical','communication','bug tracking','agile','scrum','sprint','documentation'],
+        salary: {fresher:'6–10 triệu',junior:'11–18 triệu',middle:'18–30 triệu',senior:'30–50 triệu'}
+      },
+
+      // ── 11. UI/UX DESIGNER ───────────────────────────────────
+      uiux: {
+        required: ['figma','adobe xd','wireframe','prototype','design system','user research','usability','ui','ux','interaction design','typography'],
+        niceToHave: ['illustration','adobe illustrator','photoshop','motion design','css','html','user testing','a/b testing','analytics','brand design'],
+        certs: ['google ux','interaction design foundation','figma'],
+        langs: ['english','tiếng anh','toeic','ielts'],
+        abilities: ['creative','research','empathy','presentation','stakeholder','agile','teamwork','portfolio'],
+        salary: {fresher:'6–10 triệu',junior:'11–18 triệu',middle:'18–30 triệu',senior:'30–50 triệu'}
+      },
+
+      // ── 12. PRODUCT MANAGER ──────────────────────────────────
+      product: {
+        required: ['product roadmap','user story','backlog','agile','scrum','jira','market analysis','kpi','okr','wireframe','a/b testing','stakeholder'],
+        niceToHave: ['sql','analytics','figma','business mindset','go-to-market','pricing','saas','fintech','logistics','data-driven','competitive analysis'],
+        certs: ['pmp','cspo','scrum master','product school','google analytics'],
+        langs: ['english','tiếng anh','toeic','ielts'],
+        abilities: ['strategic thinking','leadership','communication','negotiation','data-driven','agile','roadmap'],
+        salary: {junior:'18–28 triệu',middle:'28–45 triệu',senior:'45–80 triệu'}
+      },
+
+      // ── 13. BUSINESS ANALYST ─────────────────────────────────
+      ba: {
+        required: ['uml','sequence diagram','activity diagram','use case','user story','brd','srs','gap analysis','process mapping','jira','confluence','agile'],
+        niceToHave: ['sql','fintech','logistics','erp','domain knowledge','wireframe','figma','balsamiq','power bi','stakeholder management'],
+        certs: ['cbap','pmp','scrum master','iiba','agile ba'],
+        langs: ['english','tiếng anh','toeic','ielts','japanese','tiếng nhật'],
+        abilities: ['analytical','communication','documentation','bridge','negotiation','problem solving','agile','teamwork'],
+        salary: {junior:'14–22 triệu',middle:'22–35 triệu',senior:'35–60 triệu'}
+      },
+
+      // ── 14. IT SALES B2B ─────────────────────────────────────
+      sales: {
+        required: ['b2b sales','cold calling','negotiation','presentation','crm','salesforce','outsourcing','solution selling','client relationship','pipeline'],
+        niceToHave: ['cloud','aws','azure','digital transformation','networking','linkedin','sql','bi tools','saas','fintech','industry knowledge'],
+        certs: ['aws','azure','gcp','sales force','hubspot','google ads'],
+        langs: ['english','tiếng anh','toeic','ielts','japanese','tiếng nhật','jlpt','n2','n3'],
+        abilities: ['communication','persuasion','active listening','follow up','target','quota','teamwork','hunter'],
+        salary: {junior:'10–20 triệu + KPI',middle:'20–40 triệu + KPI',senior:'40–80 triệu + KPI'}
+      },
+
+      // ── DEFAULT ──────────────────────────────────────────────
+      default: {
+        required: ['git','agile','scrum','jira','documentation','communication','teamwork','problem solving'],
+        niceToHave: ['aws','docker','ci/cd','english','confluence','trello'],
+        certs: ['aws','google','microsoft','pmp','scrum master','agile'],
+        langs: ['english','tiếng anh','toeic','ielts'],
+        abilities: ['agile','scrum','teamwork','nhóm','deadline','ownership'],
+        salary: {junior:'12–20 triệu',middle:'20–35 triệu',senior:'35–60 triệu'}
+      }
+    };
+
+    // Merge required+niceToHave into k/s for scoring compat
+    Object.keys(DB).forEach(role=>{
+      const r=DB[role];
+      r.k = r.required || [];
+      r.s = [...(r.required||[]), ...(r.niceToHave||[])].slice(0,20);
+    });
+
+    // Detect role from position input (14 vị trí)
+    let role='default';
+    if(/java.*(dev|developer|engineer|backend)/i.test(pos)||/spring boot/i.test(pos)) role='java';
+    else if(/react|next\.js|next\.?js/i.test(pos)) role='react';
+    else if(/flutter|mobile|android|ios|react native/i.test(pos)) role='mobile';
+    else if(/full.?stack/i.test(pos)) role='fullstack';
+    else if(/front.?end|ui.?(developer|dev|engineer)/i.test(pos)) role='frontend';
+    else if(/back.?end|node|python|php|golang|\.net|django|laravel/i.test(pos)) role='backend';
+    else if(/devops|cloud.*engineer|sre|infrastructure|kubernetes|k8s/i.test(pos)) role='devops';
+    else if(/data.?engineer|big.?data|etl|data.?pipeline/i.test(pos)) role='data';
+    else if(/ai|ml|machine.?learn|deep.?learn|nlp|llm|computer.?vision/i.test(pos)) role='ai';
+    else if(/qa|qc|test|quality.?assur|automation.?test/i.test(pos)) role='qa';
+    else if(/ui.?ux|ux.?ui|designer|product.?design/i.test(pos)) role='uiux';
+    else if(/product.?manager|pm |product.?owner/i.test(pos)) role='product';
+    else if(/business.?analyst|ba |system.?analyst/i.test(pos)) role='ba';
+    else if(/sales|kinh.?doanh|account.?exec|b2b/i.test(pos)) role='sales';
+    else if(/java/i.test(pos)) role='java';
+    else if(/react/i.test(pos)) role='react';
+
+    const db = DB[role];
+    const tl = text.toLowerCase();
+
+    // === SCORING FUNCTIONS ===
+    function countMatch(arr){ return arr.filter(k=>tl.includes(k)).length; }
+    function score(matched, total, min=0, max=100){
+      const raw = Math.round((matched/Math.max(total,1))*100);
+      return Math.min(max, Math.max(min, raw));
+    }
+
+    // K - Knowledge
+    const kMatched = db.k.filter(k=>tl.includes(k));
+    const kGap = db.k.filter(k=>!tl.includes(k)).slice(0,4);
+    const kScore = Math.min(95, Math.max(15, Math.round((kMatched.length/db.k.length)*100)));
+
+    // S - Skills (technical stack)
+    const sMatched = db.s.filter(k=>tl.includes(k));
+    const sGap = db.s.filter(k=>!tl.includes(k)).slice(0,4);
+    const sScore = Math.min(95, Math.max(10, Math.round((sMatched.length/db.s.length)*100)));
+
+    // A - Abilities (detect from experience markers)
+    const abilityKW = [...(db.abilities||[]),'team','nhóm','lead','dẫn dắt','mentor','agile','scrum','sprint','deadline','ownership','chịu trách nhiệm','tự học'];
+    const aMatched = [...new Set(abilityKW)].filter(k=>tl.includes(k.toLowerCase()));
+    const aScore = Math.min(90, Math.max(20, 28 + aMatched.length*5));
+
+    // O - Other (certs, languages)
+    const certMatched = db.certs.filter(k=>tl.includes(k));
+    const langMatched = db.langs.filter(k=>tl.includes(k));
+    const oScore = Math.min(95, Math.max(10, (certMatched.length*20) + (langMatched.length*15)));
+
+    // Education
+    const isTopVN = /bách khoa|hust|bkhn|đại học bách|bku|vnu|hanu|neu|ueh|ntu|rmit|ftu|đhqg|dai hoc quoc gia|đại học quốc gia/i.test(text);
+    const isIntl = /university|college|abroad|nước ngoài/i.test(text);
+    const isMaster = /thạc sĩ|master|mba/i.test(text);
+    const isGoodGPA = /3\.[5-9]|4\.0|giỏi|xuất sắc/i.test(text);
+    const hasDegree = /đại học|cao đẳng|university|bachelor|engineer|kỹ sư/i.test(text);
+    const hasMajorIT = /công nghệ thông tin|khoa học máy tính|kỹ thuật phần mềm|information technology|computer science|software engineering/i.test(text);
+    const gpaMatch = text.match(/(\d\.\d{1,2})\s*\/\s*4/);
+    const gpaVal = gpaMatch ? parseFloat(gpaMatch[1]) : 0;
+
+    let schoolTier = 'Không xác định';
+    let schoolName = 'Không đề cập';
+    const schoolMatch = text.match(/(Đại học [A-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐ][^\n,\r]{3,40}|[A-Z][a-z]+ University[^\n,]{0,30}|HUST|RMIT|FPT University|UEH|NEU)/i);
+    if(schoolMatch) schoolName = schoolMatch[0].trim().substring(0,40);
+    if(isTopVN) schoolTier='Top VN';
+    else if(isIntl) schoolTier='Nước ngoài';
+    else if(hasDegree) schoolTier='Trung bình';
+
+    const eduDegree = isMaster?'Thạc sĩ': hasDegree?'Đại học': /cao đẳng/i.test(text)?'Cao đẳng':'Không đề cập';
+    const degreeScore = isMaster?95:hasDegree?80:/cao đẳng/i.test(text)?62:40;
+    const majorRelev = hasMajorIT?90: /kinh tế|business|finance|quản trị/i.test(text)?55:35;
+    const eduBase = (degreeScore*0.4)+(majorRelev*0.35)+((isTopVN||isIntl)?25:isGoodGPA||gpaVal>=3.5?15:5);
+    const eduScore = Math.min(98, Math.max(30, Math.round(eduBase)));
+
+    // Final match score
+    const matchScore = Math.round(kScore*0.22 + sScore*0.30 + aScore*0.20 + oScore*0.13 + eduScore*0.15);
+
+    // Detect candidate info
+    const nameMatch = text.match(/^([A-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐ][a-zàáâãèéêìíòóôõùúăđ]+(?:\s+[A-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐ][a-zàáâãèéêìíòóôõùúăđ]+){1,3})/m);
+    const candidateName = nameMatch ? nameMatch[1] : '';
+    const expMatch = text.match(/(\d+)\s*(?:năm|year)/i);
+    const expYears = expMatch ? expMatch[1]+' năm kinh nghiệm' : 'Không đề cập';
+
+    // Detect company
+    const coMatch = text.match(/(?:tại|at|@)\s+([A-Z][A-Za-z\s]{2,25}(?:Tech|Software|Solution|System|VN|Vietnam|Inc|Ltd|Corp)?)/);
+    const currentCompany = coMatch ? coMatch[1].trim() : '';
+
+    // Level detection
+    let level = 'Không xác định';
+    if(/senior|lead|principal|architect|staff/i.test(text)) level='Senior';
+    else if(/middle|mid.level|3.*(năm|year)|4.*(năm|year)/i.test(text)) level='Middle';
+    else if(/junior|fresher|graduate|sinh viên/i.test(text)) level='Junior';
+    else if(expMatch){
+      const yr=parseInt(expMatch[1]);
+      if(yr>=5) level='Senior'; else if(yr>=3) level='Middle'; else if(yr>=1) level='Junior'; else level='Fresher';
+    }
+
+    // Salary fit
+    const dbSal = db.salary || {};
+    const salaryFit = level==='Senior'?(dbSal.senior||'30–55 triệu/tháng'):
+                      level==='Middle'?(dbSal.middle||'18–32 triệu/tháng'):
+                      level==='Junior'?(dbSal.junior||'10–20 triệu/tháng'):
+                      (dbSal.fresher||'6–12 triệu/tháng');
+
+    // Highlight keywords
+    const hlKW = [...kMatched.slice(0,5),...sMatched.slice(0,5),...certMatched.slice(0,2)].slice(0,12);
+
+    // Build KSAO object
+    const ksao = {
+      K:{score:kScore,label:'Knowledge — Kiến thức chuyên môn',color:'#2563EB',
+         ok: kMatched.slice(0,4).length?kMatched.slice(0,4):['Có kiến thức cơ bản'],
+         gap: kGap.length?kGap:['Cần bổ sung kiến thức domain chuyên sâu']},
+      S:{score:sScore,label:'Skills — Kỹ năng kỹ thuật & nghề',color:'#0D9488',
+         ok: sMatched.slice(0,4).length?sMatched.slice(0,4):['Có một số kỹ năng liên quan'],
+         gap: sGap.slice(0,4).length?sGap.slice(0,4):['Cần thêm kỹ năng kỹ thuật cụ thể']},
+      A:{score:aScore,label:'Abilities — Năng lực & Khả năng',color:'#8B5CF6',
+         ok: aMatched.slice(0,4).length?aMatched.slice(0,4):['Thể hiện khả năng làm việc cơ bản'],
+         gap: aScore<70?['Cần bằng chứng leadership rõ ràng hơn','Thêm dẫn chứng teamwork cụ thể']:[]},
+      O:{score:oScore,label:'Other — Chứng chỉ & Yếu tố khác',color:'#F59E0B',
+         ok: [...certMatched.slice(0,2).map(c=>c.toUpperCase()+' certification'),...langMatched.slice(0,2).map(l=>'Ngoại ngữ: '+l)],
+         gap: oScore<60?['Nên có chứng chỉ cloud (AWS/GCP/Azure)','Chứng chỉ kỹ thuật chuyên ngành']:[]},
+    };
+
+    // Strengths & weaknesses
+    const strengths = [];
+    const weaknesses = [];
+    if(kScore>=70) strengths.push('Kiến thức domain vững — phát hiện '+kMatched.length+'/'+db.k.length+' keyword chuyên môn');
+    if(sScore>=70) strengths.push('Tech stack phù hợp — match '+sMatched.length+'/'+db.s.length+' kỹ năng yêu cầu');
+    if(aScore>=70) strengths.push('Năng lực mềm tốt — có bằng chứng teamwork và leadership');
+    if(certMatched.length>0) strengths.push('Có chứng chỉ chuyên môn: '+certMatched.map(c=>c.toUpperCase()).join(', '));
+    if(langMatched.length>0) strengths.push('Ngoại ngữ đề cập: '+langMatched.join(', '));
+    if(isTopVN) strengths.push('Trường Top VN — được đánh giá cao bởi nhà tuyển dụng');
+    if(strengths.length===0) strengths.push('CV trình bày có cấu trúc cơ bản');
+
+    if(kScore<60) weaknesses.push('Thiếu keyword kiến thức domain quan trọng theo vị trí');
+    if(sScore<60) weaknesses.push('Tech stack chưa match đủ yêu cầu — cần bổ sung thêm');
+    if(certMatched.length===0) weaknesses.push('Không có chứng chỉ kỹ thuật — nên bổ sung AWS/GCP/Oracle');
+    if(langMatched.length===0) weaknesses.push('Không đề cập ngoại ngữ — cần ghi rõ TOEIC/IELTS score');
+    if(weaknesses.length===0 && matchScore<80) weaknesses.push('Cần thêm bằng chứng cụ thể cho từng thành tích');
+
+    // Roadmap
+    const roadmap = [];
+    if(sGap.length>0) roadmap.push({skill:sGap[0].charAt(0).toUpperCase()+sGap[0].slice(1),priority:'Làm ngay',reason:'Kỹ năng thiếu có trọng số cao nhất trong điểm KSAO'});
+    if(certMatched.length===0) roadmap.push({skill:'Chứng chỉ cloud: AWS Cloud Practitioner hoặc tương đương',priority:'3 tháng',reason:'Tăng điểm Other +15–20 điểm, được nhà tuyển dụng đánh giá cao'});
+    if(langMatched.length===0) roadmap.push({skill:'TOEIC 700+ — bổ sung vào CV',priority:'3 tháng',reason:'Bắt buộc cho dự án quốc tế Nhật/EU/US tại các công ty ĐN'});
+    if(sGap.length>1) roadmap.push({skill:sGap[1].charAt(0).toUpperCase()+sGap[1].slice(1),priority:'6 tháng',reason:'Mở rộng stack để cạnh tranh tốt hơn'});
+    if(kGap.length>0) roadmap.push({skill:'Deep dive: '+kGap[0],priority:'6 tháng',reason:'Kiến thức chuyên sâu cần thiết cho vị trí '+cvPosText.split('\n')[0]});
+
+    // Comment
+    const commentParts=[];
+    if(matchScore>=80) commentParts.push('CV thể hiện profile mạnh và phù hợp tốt với vị trí '+cvPosText.split('\n')[0]+'.');
+    else if(matchScore>=60) commentParts.push('CV có nền tảng phù hợp với vị trí, cần bổ sung thêm một số điểm để đạt mức cạnh tranh cao.');
+    else commentParts.push('CV chưa thể hiện đầy đủ các yêu cầu của vị trí '+cvPosText.split('\n')[0]+'.');
+    if(sScore>=70) commentParts.push('Tech stack được phát hiện phù hợp với yêu cầu kỹ thuật.');
+    if(certMatched.length>0) commentParts.push('Các chứng chỉ '+certMatched.map(c=>c.toUpperCase()).join('/')+ ' là điểm cộng lớn với nhà tuyển dụng.');
+    if(isTopVN) commentParts.push('Nền tảng học vấn từ trường Top VN được đánh giá tốt trong ngành.');
+
+    const result = {
+      matchScore, level, experience:expYears,
+      field: {frontend:'Frontend Development',backend:'Backend Development',fullstack:'Fullstack Development',java:'Java / Backend Enterprise',react:'React / Next.js Development',mobile:'Mobile Development',devops:'DevOps / Cloud Engineering',data:'Data Engineering',ai:'AI / ML Engineering',qa:'QA / Testing',uiux:'UI/UX Design',product:'Product Management',ba:'Business Analysis',sales:'IT Sales B2B',default:'IT Development'}[role]||'IT Development',
+      role: level+' '+cvPosText.split('\n')[0],
+      candidateName, currentCompany, salaryFit,
+      education:{
+        score:eduScore, degree:eduDegree, major:hasMajorIT?'Công nghệ Thông tin / CNTT':hasDegree?'Không đề cập rõ':'Không đề cập',
+        majorRelevance:majorRelev, school:schoolName, schoolTier,
+        gpa: gpaVal>0?gpaVal+'/4.0':'Không đề cập',
+        achievements: isGoodGPA?['GPA Giỏi/Xuất sắc']:[],
+        note: eduScore>=80?'Học vấn đáp ứng tốt yêu cầu vị trí, trường có uy tín trong ngành IT.':
+              eduScore>=60?'Học vấn đủ điều kiện cơ bản. Nên bổ sung thêm chứng chỉ chuyên môn.':
+              'Không đọc được đầy đủ thông tin học vấn. Hãy ghi rõ trường, ngành, GPA vào CV.'
+      },
+      ksao, strengths:strengths.slice(0,4), weaknesses:weaknesses.slice(0,4), roadmap:roadmap.slice(0,5),
+      highlightKeywords:hlKW,
+      comment:commentParts.join(' '),
+      verdict: matchScore>=80?'Hồ sơ phù hợp — Đủ điều kiện Golden Ticket':matchScore>=60?'Đạt cơ bản — Cần cải thiện thêm':'Chưa phù hợp — Cần bổ sung đáng kể',
+      verdictSub: matchScore>=80?'Chúc mừng! Điểm KSAO đạt ngưỡng lên chuyến xe Tech Tour.':matchScore>=60?'CV có tiềm năng — hoàn thiện thêm các điểm yếu là đủ điều kiện.':'Cần đầu tư thêm vào kỹ năng kỹ thuật và chứng chỉ trước khi ứng tuyển.',
+      evidenceNote: cvText.length<100?'CV quá ngắn hoặc không extract được đủ text. Kết quả có thể chưa chính xác — thử upload file TXT để đạt kết quả tốt nhất.':'',
+      nextStep: roadmap.length>0?'Ưu tiên: '+roadmap[0].skill+' — '+roadmap[0].reason:'Tiếp tục maintain và cập nhật CV thường xuyên với dự án thực tế.'
+    };
+
+    cvRender(result);
+    cvApplyHL(result.highlightKeywords||[]);
+    document.getElementById('cvld').classList.remove('on');
+    document.getElementById('sn3').classList.remove('active');document.getElementById('sn3').classList.add('done');document.getElementById('sn3').textContent='✓';
+    document.getElementById('sl3').style.color='var(--ok)';
+
+  } catch(err){
+    console.error(err);
+    document.getElementById('cvld').classList.remove('on');
+    const col=document.getElementById('cvres');
+    Array.from(col.children).forEach(c=>{if(c.id!=='cvld'&&c.id!=='cvemp')c.remove();});
+    document.getElementById('cvemp').style.display='none';
+    const eb=document.createElement('div');
+    eb.style.cssText='background:rgba(239,68,68,.06);border:2px solid rgba(239,68,68,.25);border-radius:11px;padding:18px;text-align:center;';
+    eb.innerHTML='<div style="font-size:26px;margin-bottom:9px">⚠️</div><div style="font-family:Lexend,sans-serif;font-size:14px;font-weight:800;color:#dc2626;margin-bottom:6px">Lỗi phân tích</div><div style="font-size:12px;color:var(--gr);margin-bottom:12px">'+err.message+'</div><button onclick="cvRetry()" style="background:var(--pr);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-family:Lexend,sans-serif;font-size:13px;font-weight:700;cursor:pointer">Thử lại</button>';
+    col.appendChild(eb);
+  }
+}
+
+function cvRetry(){
+  // Reset step 3 và scan lại
+  document.getElementById('sn3').classList.remove('done','active');
+  document.getElementById('sn3').textContent='3';
+  document.getElementById('sl3').style.color='var(--gr)';
+  const btn=document.getElementById('cvscan');
+  if(btn && btn.classList.contains('on')){cvScan();}
+  else{alert('Vui lòng upload lại CV trước khi thử lại!');}
+}
+
+function cvRender(d){
+  const col=document.getElementById('cvres');
+  Array.from(col.children).forEach(c=>{if(c.id!=='cvld'&&c.id!=='cvemp')c.remove();});
+  document.getElementById('cvemp').style.display='none';
+
+  const s=d.matchScore||0,C=251.327;
+  const rc=s>=80?'#22c55e':s>=50?'#2563EB':'#ef4444';
+  const tCls=s>=80?'tok':s>=50?'tmid':'tlow';
+  const tTxt=s>=80?'Phù hợp tốt':s>=50?'Đạt yêu cầu cơ bản':'Chưa phù hợp';
+
+  // ── Score Card ──
+  const sc=mk('div','cvsc');
+  const candH=d.candidateName?`<div class="cvcand"><div class="cvav">${(d.candidateName.trim().split(' ').pop()||'?')[0].toUpperCase()}</div><div><div class="cvcn">${d.candidateName}</div><div class="cvcm">${[d.currentCompany,d.field].filter(Boolean).join(' · ')}</div></div></div>`:'';
+  sc.innerHTML=`<div class="cvscr"><div class="cvrw"><svg width="84" height="84" viewBox="0 0 84 84"><circle class="cvrbg" cx="42" cy="42" r="34" fill="none" stroke-width="6.5"/><circle class="cvrfg" id="cvrfg" cx="42" cy="42" r="34" fill="none" stroke-width="6.5" stroke="${rc}" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><div class="cvrc"><div class="cvrn" id="cvrnm">0</div><div class="cvrp">%</div></div></div><div style="flex:1"><span class="cvtg ${tCls}">${tTxt}</span><div class="cvv">${d.verdict||'—'}</div><div class="cvvs">${d.verdictSub||''}</div></div></div>${candH}`;
+  col.appendChild(sc);
+  setTimeout(()=>{
+    const ring=document.getElementById('cvrfg'),nm=document.getElementById('cvrnm');
+    if(ring)ring.style.strokeDashoffset=C-(s/100)*C;
+    if(nm)cvCount(nm,0,s,1400);
+  },80);
+
+  // ── Stats ──
+  const st=mk('div','cvstat');
+  st.innerHTML=`<div class="cvs"><div class="cvsl">Cấp bậc</div><div class="cvsv ca">${d.level||'—'}</div></div><div class="cvs"><div class="cvsl">Kinh nghiệm</div><div class="cvsv">${d.experience||'—'}</div></div><div class="cvs"><div class="cvsl">Lương phù hợp ĐN</div><div class="cvsv co">${d.salaryFit||'—'}</div></div><div class="cvs"><div class="cvsl">Lĩnh vực</div><div class="cvsv">${d.field||'—'}</div></div><div class="cvs"><div class="cvsl">Vị trí match</div><div class="cvsv cg" style="font-size:11px;line-height:1.3">${d.role||'—'}</div></div><div class="cvs"><div class="cvsl">Vị trí apply</div><div class="cvsv" style="font-size:11px;line-height:1.3">${cvPosText.split('\n')[0]||'—'}</div></div>`;
+  col.appendChild(st);
+
+  // ── EDUCATION CARD ──
+  const edu=d.education||{};
+  const edScore=edu.score||0;
+  const tierClass={Top_VN:'tier-top','Top VN':'tier-top','Trung bình':'tier-mid','Nước ngoài':'tier-int','Không xác định':'tier-low'}[edu.schoolTier]||'tier-low';
+  const tierLabel={'Top VN':'🏆 Top VN','Trung bình':'📘 TB','Nước ngoài':'🌏 Quốc tế','Không xác định':'❓ Chưa rõ'}[edu.schoolTier]||'❓';
+  const ecard=mk('div','edu-card');
+  const achH=(edu.achievements&&edu.achievements.length)?`<div style="margin-top:6px"><div style="font-size:10px;font-weight:700;color:var(--gr);text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px">Thành tích</div>${edu.achievements.slice(0,2).map(a=>`<div style="font-size:11px;color:var(--dk);line-height:1.4;padding:2px 0">• ${a}</div>`).join('')}</div>`:'';
+  ecard.innerHTML=`
+    <div class="edu-hd">
+      <div class="edu-title">Đánh giá Học vấn</div>
+      <div class="edu-score" style="color:${edScore>=80?'var(--ok)':edScore>=60?'var(--gd)':'var(--er)'}">${edScore}<span>/100</span></div>
+    </div>
+    <div class="edu-bars">
+      <div class="ebar"><div class="ebar-l">Bằng cấp</div><div class="ebar-t"><div class="ebar-f" style="width:0%;background:var(--pr)" data-w="${edu.degree==='Thạc sĩ'?95:edu.degree==='Đại học'?80:edu.degree==='Cao đẳng'?60:40}%"></div></div><div class="ebar-v" id="eb1v">${edu.degree==='Thạc sĩ'?95:edu.degree==='Đại học'?80:edu.degree==='Cao đẳng'?60:40}%</div></div>
+      <div class="ebar"><div class="ebar-l">Liên quan ngành</div><div class="ebar-t"><div class="ebar-f" style="width:0%;background:var(--ac)" data-w="${edu.majorRelevance||0}%"></div></div><div class="ebar-v">${edu.majorRelevance||0}%</div></div>
+    </div>
+    <div class="edu-details">
+      <div class="edu-det"><div class="edu-det-l">Chuyên ngành</div><div class="edu-det-v">${edu.major||'Không đề cập'}</div></div>
+      <div class="edu-det"><div class="edu-det-l">Trường học</div><div class="edu-det-v" style="font-size:11px">${edu.school||'Không đề cập'}</div></div>
+      <div class="edu-det"><div class="edu-det-l">Hạng trường</div><div class="edu-det-v ${tierClass}">${tierLabel}</div></div>
+      <div class="edu-det"><div class="edu-det-l">GPA</div><div class="edu-det-v">${edu.gpa||'Không đề cập'}</div></div>
+    </div>
+    ${achH}
+    <div class="edu-note">${edu.note||'Chưa có nhận xét học vấn.'}</div>`;
+  col.appendChild(ecard);
+  setTimeout(()=>ecard.querySelectorAll('.ebar-f').forEach(e=>e.style.width=e.dataset.w),120);
+
+  // ── KSAO ──
+  const ksao=d.ksao||{};
+  const kw=mk('div','');kw.style.cssText='background:var(--lt);border:1px solid var(--bd);border-radius:10px;padding:13px;';
+  const kg=mk('div','ksao-grid');
+  ['K','S','A','O'].forEach(key=>{
+    const kd=ksao[key];if(!kd)return;
+    const sc2=kd.score||0;
+    const bx=mk('div','ksao-bx');
+    const okH=(kd.ok||[]).slice(0,4).map(x=>`<div class="ki ok"><div class="kd"></div><span>${x}</span></div>`).join('');
+    const gpH=(kd.gap||[]).slice(0,4).map(x=>`<div class="ki gap"><div class="kd"></div><span>${x}</span></div>`).join('');
+    bx.innerHTML=`<div class="ksao-lt" style="color:${kd.color}">${key}</div><div class="ksao-nm">${kd.label||''}</div><div class="ksao-sr"><div class="ksao-pct" style="color:${kd.color}">${sc2}%</div><div class="ksao-bar"><div class="ksao-fill" style="width:0%;background:${kd.color}" data-w="${sc2}%"></div></div></div><div class="ksao-items">${okH}${gpH}</div>`;
+    kg.appendChild(bx);
+  });
+  kw.innerHTML='<div class="cvlbl">Phân tích KSAO — Đối chiếu vị trí đã chọn</div>';
+  kw.appendChild(kg);col.appendChild(kw);
+  setTimeout(()=>kw.querySelectorAll('.ksao-fill').forEach(e=>e.style.width=e.dataset.w),130);
+
+  // ── STRENGTHS / WEAKNESSES ──
+  if((d.strengths?.length)||(d.weaknesses?.length)){
+    const sw=mk('div','');sw.style.cssText='background:var(--lt);border:1px solid var(--bd);border-radius:10px;padding:13px;';
+    let swH='<div class="cvlbl">Điểm mạnh & Cần cải thiện</div><div class="cv-sw">';
+    (d.strengths||[]).forEach(x=>{swH+=`<div class="cv-swi"><span style="color:var(--ok);font-weight:700;flex-shrink:0">✓</span><span>${x}</span></div>`;});
+    (d.weaknesses||[]).forEach(x=>{swH+=`<div class="cv-swi" style="border-color:rgba(255,107,0,.14)"><span style="color:var(--sec);font-weight:700;flex-shrink:0">△</span><span>${x}</span></div>`;});
+    swH+='</div>';sw.innerHTML=swH;col.appendChild(sw);
+  }
+
+  // ── ROADMAP ──
+  if(d.roadmap?.length){
+    const rw=mk('div','');rw.style.cssText='background:var(--lt);border:1px solid var(--bd);border-radius:10px;padding:13px;';
+    const tagMap={'Làm ngay':'rm-now','3 tháng':'rm-3m','6 tháng':'rm-6m'};
+    let rH='<div class="cvlbl">Lộ trình bổ sung kỹ năng</div><div class="roadmap">';
+    d.roadmap.slice(0,5).forEach(r=>{
+      const cls=tagMap[r.priority]||'rm-6m';
+      rH+=`<div class="rm-item"><span class="rm-tag ${cls}">${r.priority}</span><div><div class="rm-txt">${r.skill}</div><div class="rm-rsn">${r.reason||''}</div></div></div>`;
+    });
+    rH+='</div>';rw.innerHTML=rH;col.appendChild(rw);
+  }
+
+  // ── COMMENT ──
+  if(d.comment){
+    const cm=mk('div','cvcmt');
+    const nxH=d.nextStep?`<div class="cvnext"><strong>Bước tiếp theo:</strong> ${d.nextStep}</div>`:'';
+    const evH=d.evidenceNote?`<div class="cvevid"><strong>Lưu ý:</strong> ${d.evidenceNote}</div>`:'';
+    cm.innerHTML=`<div class="cvlbl" style="color:var(--ac)">Nhận xét AI — So với vị trí ứng tuyển</div>${d.comment}${nxH}${evH}`;
+    col.appendChild(cm);
+  }
+
+  // ── GOLDEN TICKET ──
+  if(s>=80){
+    const code=Math.random().toString(36).substring(2,8).toUpperCase();
+    const tk=mk('div','cvtk');
+    tk.innerHTML=`<div style="font-size:28px;margin-bottom:8px;letter-spacing:2px;color:var(--gd)">🎫 TẤM VÉ VÀNG</div><div class="cvtks">KSAO Matching ${s}% — Đủ điều kiện lên chuyến xe<br>Central Tech Tour Đà Nẵng 2026</div><div style="background:rgba(245,158,11,.15);border:1.5px solid rgba(245,158,11,.4);border-radius:8px;padding:10px 16px;margin:12px auto;width:fit-content;font-family:'Lexend',sans-serif;font-size:20px;font-weight:900;color:var(--gd);letter-spacing:5px">${code}</div><div class="cvtkc">CTT-DN-2026 · ${d.candidateName||'CANDIDATE'} · #${code}</div>`;
+    col.appendChild(tk);
+  }
+}
+
+function cvApplyHL(kws){
+  if(!kws?.length)return;
+  if(cvIsText){
+    let h=cvEsc(cvText);
+    kws.forEach(k=>{try{const rx=new RegExp('('+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');h=h.replace(rx,'<mark>$1</mark>');}catch(e){}});
+    document.getElementById('cvtxt').innerHTML=h;return;
+  }
+  cvClrHL();
+  const layer=document.getElementById('cvhl'),box=document.getElementById('cvcanv');
+  const W=box.offsetWidth||440,H=box.scrollHeight||580;
+  const used=[];
+  kws.slice(0,12).forEach((kw,i)=>{
+    let top,left,tries=0;
+    do{top=14+((i*73+tries*11)%(Math.max(H-36,200)));left=3+((i*59+tries*31)%(Math.max(W-110,200)));tries++;}
+    while(used.some(p=>Math.abs(p.t-top)<20&&Math.abs(p.l-left)<110)&&tries<25);
+    used.push({t:top,l:left});
+    const pin=document.createElement('div');pin.className='cvpin';
+    pin.style.cssText=`top:${top}px;left:${left}px;animation-delay:${i*55}ms`;
+    pin.innerHTML=`<div class="cvpin-d"></div><div class="cvpin-l">${kw}</div>`;
+    layer.appendChild(pin);
+  });
+}
+function cvClrHL(){document.getElementById('cvhl').innerHTML='';}
+function cvClrCanv(box){Array.from(box.children).forEach(c=>{if(c.id!=='cvhl')c.remove();});}
+function cvToB64(f){return new Promise(r=>{const rd=new FileReader();rd.onload=e=>r(e.target.result);rd.readAsDataURL(f);});}
+function cvEsc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function cvCount(el,from,to,dur){const t0=performance.now();(function f(now){const p=Math.min((now-t0)/dur,1);el.textContent=Math.round(from+(to-from)*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f);})(t0);}
+function mk(tag,cls){const e=document.createElement(tag);e.className=cls;return e;}
+
+function cvDemo(){
+  return {matchScore:12,level:'Không xác định',experience:'Không đề cập',field:'Không liên quan',role:'Chưa phù hợp',candidateName:'',currentCompany:'',salaryFit:'Chưa xác định',
+    education:{score:40,degree:'Không đề cập',major:'Không đề cập',majorRelevance:0,school:'Không đề cập',schoolTier:'Không xác định',gpa:'Không đề cập',achievements:[],note:'Không đọc được thông tin học vấn từ CV. Vui lòng đảm bảo CV có đầy đủ thông tin trường, ngành học.'},
+    ksao:{
+      K:{score:10,label:'Knowledge — Kiến thức chuyên môn',color:'#2563EB',ok:['Không đọc được kiến thức liên quan'],gap:['Thiếu kiến thức domain theo vị trí ứng tuyển']},
+      S:{score:8,label:'Skills — Kỹ năng kỹ thuật & nghề',color:'#0D9488',ok:[],gap:['Không tìm thấy kỹ năng kỹ thuật theo yêu cầu']},
+      A:{score:18,label:'Abilities — Năng lực & Khả năng',color:'#8B5CF6',ok:['CV có cấu trúc rõ ràng'],gap:['Không có bằng chứng năng lực theo yêu cầu']},
+      O:{score:14,label:'Other — Chứng chỉ & Yếu tố khác',color:'#F59E0B',ok:[],gap:['Thiếu chứng chỉ, ngoại ngữ theo yêu cầu']}
+    },
+    strengths:['CV trình bày có cấu trúc về mặt hình thức'],
+    weaknesses:['Không có yếu tố KSAO nào khớp với vị trí đã chọn','Thiếu kinh nghiệm và kỹ năng theo yêu cầu'],
+    roadmap:[{skill:'Bổ sung kỹ năng kỹ thuật theo vị trí',priority:'Làm ngay',reason:'Đây là yếu tố quan trọng nhất để pass vòng CV'},{skill:'Hoàn thiện thông tin học vấn trong CV',priority:'Làm ngay',reason:'Thiếu thông tin trường/ngành gây bất lợi'}],
+    highlightKeywords:[],
+    comment:'CV chưa thể hiện các yếu tố KSAO theo yêu cầu vị trí đã chọn. Để tăng điểm matching, cần bổ sung kiến thức chuyên môn, kỹ năng kỹ thuật và kinh nghiệm thực tế liên quan trực tiếp đến vị trí. Khoảng cách này cần được lấp đầy trước khi ứng tuyển.',
+    verdict:'CV chưa phù hợp với vị trí đã chọn',verdictSub:'Điểm KSAO thấp — Cần bổ sung trước khi ứng tuyển.',
+    evidenceNote:'Không tìm thấy đủ thông tin trong CV để đánh giá chính xác.',
+    nextStep:'Cập nhật CV với đầy đủ kỹ năng kỹ thuật, dự án thực tế và thông tin học vấn.'};
+}
+
+// ── CALCULATOR ──
+const CITIES={hn:{name:'Hà Nội',traffic:'60–90 phút',costs:{rent:8,food:5,transport:2,other:3}},hcm:{name:'TP.HCM',traffic:'75–100 phút',costs:{rent:9,food:5.5,transport:2.5,other:3.5}}};
+const DN={rent:4,food:3.5,transport:1,other:2.5};
+function calcBalance(){
+  const sal=parseFloat(document.getElementById('calc-sal').value);
+  if(!sal||sal<1){alert('Nhập lương hợp lệ!');return;}
+  const city=CITIES[document.getElementById('calc-city').value];
+  const dnSal=Math.round(sal*0.85);
+  const curCost=Object.values(city.costs).reduce((a,b)=>a+b,0);
+  const dnCost=Object.values(DN).reduce((a,b)=>a+b,0);
+  document.getElementById('cc-city').textContent=city.name;
+  document.getElementById('cc-sal').textContent=sal+' triệu';
+  document.getElementById('cc-net').textContent=(sal-curCost).toFixed(1)+' triệu';
+  document.getElementById('dn-sal').textContent=dnSal+' triệu';
+  document.getElementById('dn-net').textContent=(dnSal-dnCost).toFixed(1)+' triệu';
+  document.getElementById('tc-city').textContent=city.name;
+  document.getElementById('tc-time').textContent=city.traffic;
+  const names={rent:'Thuê nhà',food:'Ăn uống',transport:'Đi lại',other:'Khác'};
+  const clrs=['#FF6B00','#0055A4','#00C2A8','#8B5CF6'];
+  const maxC=Math.max(...Object.values(city.costs));
+  document.getElementById('cbrk').innerHTML=Object.entries(names).map(([k,n],i)=>`<div class="crow"><span class="cat">${n}</span><div class="bb"><div class="bf" style="width:0%;background:${clrs[i]}" data-w="${(city.costs[k]/maxC*100).toFixed(0)}%"></div></div><span class="amt"><span style="color:var(--sec)">${city.costs[k]}tr</span> → <span style="color:var(--ok)">${DN[k]}tr</span></span></div>`).join('');
+  setTimeout(()=>document.querySelectorAll('.bf').forEach(e=>e.style.width=e.dataset.w),80);
+  const saved=(curCost-dnCost).toFixed(1);
+  document.getElementById('v-t').textContent=`Tại Đà Nẵng, bạn tiết kiệm thêm ~${saved} triệu/tháng`;
+  document.getElementById('v-s').textContent=`Chi phí sinh hoạt thấp hơn ${city.name} khoảng ${saved} triệu/tháng. Cộng thêm ${city.traffic} kẹt xe tiết kiệm mỗi ngày — đó là 30+ giờ tự do/tháng để ra biển.`;
+  document.getElementById('calc-res').classList.add('on');
+}
+
+// ── VIRTUAL TOUR ──
+function showOff(key,x,y){
+  const o=OFFICES[key];if(!o)return;
+  document.getElementById('op-n').textContent=o.name;
+  document.getElementById('op-m').textContent=o.meta;
+  document.getElementById('op-t').innerHTML=o.tags.map(t=>`<span class="otag">${t}</span>`).join('');
+  const pop=document.getElementById('opop');pop.classList.add('on');
+  const rect=document.getElementById('mapc').getBoundingClientRect();
+  const sx=rect.width/700,sy=rect.height/340;
+  let left=x*sx+18,top=y*sy-10;
+  if(left+230>rect.width)left=x*sx-238;
+  if(top+200>rect.height)top=y*sy-210;
+  pop.style.left=Math.max(0,left)+'px';pop.style.top=Math.max(0,top)+'px';
+}
+function closeOff(){document.getElementById('opop').classList.remove('on');}
+
+// ── REFERRAL ──
+function copyRef(){
+  const inp=document.getElementById('ref-lnk');inp.select();
+  try{
+    if(navigator.clipboard){navigator.clipboard.writeText(inp.value);}
+    else{document.execCommand('copy');}
+  }catch(e){}
+  const b=document.querySelector('.refl button');b.textContent='✓ Đã sao chép!';
+  showToast('✓ Đã sao chép link referral!','#22c55e');
+  setTimeout(()=>b.textContent='Sao chép',2000);
+}
+
+// ── TOUR ──
+function subTour(){
+  const n=document.getElementById('tr-name').value.trim(),e=document.getElementById('tr-email').value.trim(),p=document.getElementById('tr-phone').value.trim();
+  if(!n||!e||!p){showToast('⚠️ Vui lòng điền đầy đủ: Họ tên, Email, Số điện thoại!','#ef4444');return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){showToast('⚠️ Email không hợp lệ!','#ef4444');return;}
+  closeM('m-tour');
+  showToast('✓ Đăng ký thành công! Chúng tôi sẽ liên hệ '+e+' trong 24h','#22c55e');
+}
+</script>
+</body>
+</html>
